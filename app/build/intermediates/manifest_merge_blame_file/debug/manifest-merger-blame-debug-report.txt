@@ -1,0 +1,234 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.techcamino.mft_rider"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+8-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+11-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:5:5-81
+11-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:5:22-78
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:6:5-67
+12-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:6:22-64
+13    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+13-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:7:5-77
+13-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:7:22-74
+14    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+14-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:8:5-79
+14-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:8:22-76
+15    <uses-permission android:name="android.permission.CAMERA" />
+15-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:9:5-65
+15-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:9:22-62
+16    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" -->
+17    <!-- tools:ignore="ScopedStorage" /> -->
+18    <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> -->
+19
+20    <uses-feature
+20-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:15:5-17:35
+21        android:name="android.hardware.camera"
+21-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:16:9-47
+22        android:required="true" />
+22-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:17:9-32
+23
+24    <queries>
+24-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:19:5-24:15
+25        <intent>
+25-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:20:9-22:18
+26            <action android:name="android.media.action.IMAGE_CAPTURE" />
+26-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:21:13-73
+26-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:21:21-70
+27        </intent>
+28
+29        <!-- Needs to be explicitly declared on Android R+ -->
+30        <package android:name="com.google.android.apps.maps" />
+30-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Lenovo\.gradle\caches\transforms-3\c2e0fa589247fad1dba629a5921765fa\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:33:9-64
+30-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Lenovo\.gradle\caches\transforms-3\c2e0fa589247fad1dba629a5921765fa\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:33:18-61
+31    </queries>
+32
+33    <!-- Include required permissions for Google Maps API to run. -->
+34    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+34-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Lenovo\.gradle\caches\transforms-3\c2e0fa589247fad1dba629a5921765fa\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:23:5-79
+34-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Lenovo\.gradle\caches\transforms-3\c2e0fa589247fad1dba629a5921765fa\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:23:22-76
+35
+36    <uses-feature
+36-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Lenovo\.gradle\caches\transforms-3\c2e0fa589247fad1dba629a5921765fa\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:26:5-28:35
+37        android:glEsVersion="0x00020000"
+37-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Lenovo\.gradle\caches\transforms-3\c2e0fa589247fad1dba629a5921765fa\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:27:9-41
+38        android:required="true" />
+38-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Lenovo\.gradle\caches\transforms-3\c2e0fa589247fad1dba629a5921765fa\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:28:9-32
+39
+40    <application
+40-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:25:5-84:19
+41        android:allowBackup="true"
+41-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:26:9-35
+42        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+42-->[androidx.core:core:1.7.0] C:\Users\Lenovo\.gradle\caches\transforms-3\fb3270031bd107031c21c5dc13d9e5ef\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+43        android:debuggable="true"
+44        android:extractNativeLibs="false"
+45        android:icon="@drawable/logo"
+45-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:27:9-38
+46        android:label="@string/app_name"
+46-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:28:9-41
+47        android:roundIcon="@drawable/logo"
+47-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:29:9-43
+48        android:supportsRtl="true"
+48-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:30:9-35
+49        android:testOnly="true"
+50        android:theme="@style/Theme.MFT_RIDER"
+50-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:31:9-47
+51        android:usesCleartextTraffic="true" >
+51-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:32:9-44
+52        <activity
+52-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:33:9-35:40
+53            android:name="com.techcamino.mft_rider.activity.MapActivity"
+53-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:34:13-49
+54            android:exported="false" />
+54-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:35:13-37
+55        <activity
+55-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:36:9-38:40
+56            android:name="com.techcamino.mft_rider.activity.ReceiptActivity"
+56-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:37:13-53
+57            android:exported="false" />
+57-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:38:13-37
+58        <activity
+58-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:39:9-41:40
+59            android:name="com.techcamino.mft_rider.activity.HomeActivity"
+59-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:40:13-50
+60            android:exported="false" />
+60-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:41:13-37
+61        <activity
+61-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:42:9-45:58
+62            android:name="com.techcamino.mft_rider.activity.OtpActivity"
+62-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:43:13-49
+63            android:exported="false"
+63-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:44:13-37
+64            android:windowSoftInputMode="adjustResize" />
+64-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:45:13-55
+65        <activity
+65-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:46:9-55:20
+66            android:name="com.techcamino.mft_rider.activity.SplashActivity"
+66-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:47:13-52
+67            android:exported="true"
+67-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:48:13-36
+68            android:theme="@style/SplashTheme" >
+68-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:49:13-47
+69            <intent-filter>
+69-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:50:13-54:29
+70                <action android:name="android.intent.action.MAIN" />
+70-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:51:17-69
+70-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:51:25-66
+71
+72                <category android:name="android.intent.category.LAUNCHER" />
+72-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:53:17-77
+72-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:53:27-74
+73            </intent-filter>
+74        </activity>
+75        <activity
+75-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:56:9-59:58
+76            android:name="com.techcamino.mft_rider.activity.LoginActivity"
+76-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:57:13-51
+77            android:exported="false"
+77-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:58:13-37
+78            android:windowSoftInputMode="adjustResize" />
+78-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:59:13-55
+79        <activity
+79-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:60:9-62:40
+80            android:name="com.techcamino.mft_rider.activity.MainActivity"
+80-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:61:13-50
+81            android:exported="false" />
+81-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:62:13-37
+82
+83        <meta-data
+83-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:64:9-66:47
+84            android:name="com.google.android.geo.API_KEY"
+84-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:65:13-58
+85            android:value="@string/map_key" />
+85-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:66:13-44
+86
+87        <provider
+87-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:68:9-76:20
+88            android:name="androidx.core.content.FileProvider"
+88-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:69:13-62
+89            android:authorities="techcamino.mft_rider.provider"
+89-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:70:13-64
+90            android:exported="false"
+90-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:71:13-37
+91            android:grantUriPermissions="true" >
+91-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:72:13-47
+92            <meta-data
+92-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:73:13-75:53
+93                android:name="android.support.FILE_PROVIDER_PATHS"
+93-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:74:17-67
+94                android:resource="@xml/file_path" />
+94-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:75:17-50
+95        </provider>
+96
+97        <!-- Location service -->
+98        <service
+98-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:79:9-82:39
+99            android:name="com.techcamino.mft_rider.services.LocationUpdatesService"
+99-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:80:13-60
+100            android:enabled="true"
+100-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:81:13-35
+101            android:exported="true" />
+101-->C:\AndroidProject\QwertyCode\mft_rider\app\src\main\AndroidManifest.xml:82:13-36
+102
+103        <activity
+103-->[com.karumi:dexter:6.2.2] C:\Users\Lenovo\.gradle\caches\transforms-3\15fd133470d80df75c0ccfbda09e95dc\transformed\jetified-dexter-6.2.2\AndroidManifest.xml:27:9-29:72
+104            android:name="com.karumi.dexter.DexterActivity"
+104-->[com.karumi:dexter:6.2.2] C:\Users\Lenovo\.gradle\caches\transforms-3\15fd133470d80df75c0ccfbda09e95dc\transformed\jetified-dexter-6.2.2\AndroidManifest.xml:28:13-60
+105            android:theme="@style/Dexter.Internal.Theme.Transparent" /> <!-- Needs to be explicitly declared on P+ -->
+105-->[com.karumi:dexter:6.2.2] C:\Users\Lenovo\.gradle\caches\transforms-3\15fd133470d80df75c0ccfbda09e95dc\transformed\jetified-dexter-6.2.2\AndroidManifest.xml:29:13-69
+106        <uses-library
+106-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Lenovo\.gradle\caches\transforms-3\c2e0fa589247fad1dba629a5921765fa\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:39:9-41:40
+107            android:name="org.apache.http.legacy"
+107-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Lenovo\.gradle\caches\transforms-3\c2e0fa589247fad1dba629a5921765fa\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:40:13-50
+108            android:required="false" />
+108-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\Lenovo\.gradle\caches\transforms-3\c2e0fa589247fad1dba629a5921765fa\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:41:13-37
+109
+110        <activity
+110-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Lenovo\.gradle\caches\transforms-3\7e14668444095dd0816d868e315f55b0\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+111            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+111-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Lenovo\.gradle\caches\transforms-3\7e14668444095dd0816d868e315f55b0\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+112            android:exported="false"
+112-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Lenovo\.gradle\caches\transforms-3\7e14668444095dd0816d868e315f55b0\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+113            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+113-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Lenovo\.gradle\caches\transforms-3\7e14668444095dd0816d868e315f55b0\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+114
+115        <meta-data
+115-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\Lenovo\.gradle\caches\transforms-3\0a117a36ab33f6b04c785737dfadc02f\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
+116            android:name="com.google.android.gms.version"
+116-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\Lenovo\.gradle\caches\transforms-3\0a117a36ab33f6b04c785737dfadc02f\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
+117            android:value="@integer/google_play_services_version" />
+117-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\Lenovo\.gradle\caches\transforms-3\0a117a36ab33f6b04c785737dfadc02f\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
+118
+119        <provider
+119-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-3\86bbdb4c704f0c6ef69f85fd6941d5d8\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+120            android:name="androidx.startup.InitializationProvider"
+120-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-3\86bbdb4c704f0c6ef69f85fd6941d5d8\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
+121            android:authorities="com.techcamino.mft_rider.androidx-startup"
+121-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-3\86bbdb4c704f0c6ef69f85fd6941d5d8\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
+122            android:exported="false" >
+122-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-3\86bbdb4c704f0c6ef69f85fd6941d5d8\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
+123            <meta-data
+123-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-3\86bbdb4c704f0c6ef69f85fd6941d5d8\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+124                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+124-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-3\86bbdb4c704f0c6ef69f85fd6941d5d8\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
+125                android:value="androidx.startup" />
+125-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Lenovo\.gradle\caches\transforms-3\86bbdb4c704f0c6ef69f85fd6941d5d8\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
+126            <meta-data
+126-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Lenovo\.gradle\caches\transforms-3\60fb03f7868607ff1baa13fa3ab998ab\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+127                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+127-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Lenovo\.gradle\caches\transforms-3\60fb03f7868607ff1baa13fa3ab998ab\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+128                android:value="androidx.startup" />
+128-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Lenovo\.gradle\caches\transforms-3\60fb03f7868607ff1baa13fa3ab998ab\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+129        </provider>
+130    </application>
+131
+132</manifest>
