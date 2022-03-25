@@ -42,8 +42,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 import com.techcamino.mft_rider.models.MessageDetail
 import com.techcamino.mft_rider.models.orders.Data
-
-
 class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener,
     View.OnClickListener, OrderAdapter.OnItemClickListener {
 
@@ -87,6 +85,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.string.app_name,
             R.string.app_name
         )
+
         toggle.setHomeAsUpIndicator(R.drawable.ic_baseline_fiber_pin_24)
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -111,6 +110,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         token = shared.getString(this@HomeActivity.resources.getString(R.string.access_token), "")!!
         // call api to get orders
         getOrders(token, "all")
+        binding.appBar.tvTitle.text="All"
         // get all order history
         getOrderHistory(token)
         super.onStart()
@@ -166,7 +166,6 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                             val orderHistory: OrderHistory = response.body()!!.result!!
                             Log.d("accepted order count", orderHistory.acceptedOrders.toString())
                             setMenuItemVal(orderHistory)
-
                         }
 
                     } else {
@@ -197,23 +196,27 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun setMenuItemVal(orderHistory: OrderHistory) {
+
         val item =
             (binding.navView.menu.findItem(R.id.delivered).actionView) as TextView
         item.gravity = Gravity.CENTER_VERTICAL
         item.setTypeface(null, Typeface.BOLD)
         item.text = orderHistory.deliveredOrders.toString()
+
         // pending order
         val pending =
             (binding.navView.menu.findItem(R.id.pending).actionView) as TextView
         pending.gravity = Gravity.CENTER_VERTICAL
         pending.setTypeface(null, Typeface.BOLD)
         pending.text = orderHistory.pendingOrders.toString()
+
         // accepted order
         val accepted =
             (binding.navView.menu.findItem(R.id.accepted).actionView) as TextView
         accepted.gravity = Gravity.CENTER_VERTICAL
         accepted.setTypeface(null, Typeface.BOLD)
         accepted.text = orderHistory.acceptedOrders.toString()
+
         // all order
         val all =
             (binding.navView.menu.findItem(R.id.all).actionView) as TextView
@@ -221,6 +224,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         all.setTypeface(null, Typeface.BOLD)
         all.text =
             (orderHistory.acceptedOrders!! + orderHistory.pendingOrders!! + orderHistory.deliveredOrders!!).toString()
+
     }
 
     private fun getOrders(token: String, type: String) {
@@ -304,18 +308,22 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.delivered -> {
                 Log.d("menu", "Deleivered")
                 getOrders(token, "delivered_orders")
+                binding.appBar.tvTitle.text="Delivered"
             }
             R.id.accepted -> {
                 Log.d("menu", "accepted")
                 getOrders(token, "accepted_orders")
+                binding.appBar.tvTitle.text="Accepted Order"
             }
             R.id.pending -> {
                 Log.d("menu", "pending")
                 getOrders(token, "pending_orders")
+                binding.appBar.tvTitle.text="Pending Order"
             }
             R.id.all -> {
                 Log.d("menu", "All")
                 getOrders(token, "all")
+                binding.appBar.tvTitle.text="All"
             }
 
         }
@@ -355,7 +363,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onItemClick(order: Order.Result.Orders) {
         Log.d("Order detail", order.address!!)
-        if (order.riderStatus?.lowercase() == "accepted_orders") {
+       /* if (order.riderStatus?.lowercase() == "accepted_orders") {
             Intent(
                 this@HomeActivity,
                 ReceiptActivity::class.java
@@ -364,7 +372,17 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             }.also {
                 startActivity(it)
             }
+        }*/
+
+        Intent(
+            this@HomeActivity,
+            ReceiptActivity::class.java
+        ).apply {
+            putExtra("order", order)
+        }.also {
+            startActivity(it)
         }
+
     }
 
     override fun changeState(order: Order.Result.Orders, status: Boolean) {
@@ -452,4 +470,5 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         val submit = bottomSheetDialog.findViewById<CardView>(R.id.submit_decline)
         submit!!.setOnClickListener(this)
     }
+
 }

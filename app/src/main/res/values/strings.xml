@@ -35,8 +35,10 @@
     <string name="uploaded_image">Uploaded Image</string>
     <string name="mark_delivered">Mark As Delivered</string>
     <string name="accepted">Accepted</string>
+
     <string name="pickedup">Picked Up</string>
     <string name="declined">Declined</string>
+    <string name="view_order">View Order</string>
 
     <string name="map_key">AIzaSyDEKaoUFAop3hQl68Kh127oFsaEJ88JTlg</string>
 

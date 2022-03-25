@@ -28,7 +28,8 @@ data class Order(
             @SerializedName("shippingtimeslot" ) var shippingtimeslot : String?           = null,
             @SerializedName("deliverydate"     ) var deliverydate     : String?           = null,
             @SerializedName("rider_status"     ) var riderStatus      : String?           = null,
-            @SerializedName("images"           ) var images           : ArrayList<String> = arrayListOf()
+            @SerializedName("images"           ) var images           : ArrayList<String> = arrayListOf(),
+            @SerializedName("suborder_count"   ) var subOrder         : String?           = null
 
         ): Parcelable {
             constructor(parcel: Parcel) : this(
@@ -39,6 +40,7 @@ data class Order(
                 parcel.readString(),
                 parcel.readString(),
                 parcel.readArrayList( Orders::class.java.classLoader) as ArrayList<String>,
+                parcel.readString()
             ) {
             }
 
@@ -50,6 +52,7 @@ data class Order(
                 parcel.writeString(deliverydate)
                 parcel.writeString(riderStatus)
                 parcel.writeList(images)
+                parcel.writeString(subOrder)
 //                if (Build.VERSION.SDK_INT >= 29) {
 //                    parcel.writeParcelableList(images,flags)
 //                }else{

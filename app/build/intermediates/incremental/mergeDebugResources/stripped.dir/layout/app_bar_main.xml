@@ -24,12 +24,21 @@
             android:id="@+id/toolbar_title" />-->
 
     </androidx.appcompat.widget.Toolbar>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_title"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_below="@+id/toolbar"
+        android:text="Delivered"
+        />
     <include
         android:id="@+id/order_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         layout="@layout/content_main"
-        android:layout_below="@+id/toolbar"/>
+        android:layout_below="@+id/tv_title"/>
 
 </RelativeLayout>

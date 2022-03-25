@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.techcamino.mft_rider.R;
@@ -20,7 +21,7 @@ import java.lang.String;
 
 public final class OrderViewDesignBinding implements ViewBinding {
   @NonNull
-  private final CardView rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final CardView acceptBtn;
@@ -50,10 +51,16 @@ public final class OrderViewDesignBinding implements ViewBinding {
   public final TextView delTime;
 
   @NonNull
+  public final CardView fab;
+
+  @NonNull
   public final ImageView imageview;
 
   @NonNull
   public final CardView kmView;
+
+  @NonNull
+  public final LinearLayout layoutCard;
 
   @NonNull
   public final TextView orderId;
@@ -62,7 +69,7 @@ public final class OrderViewDesignBinding implements ViewBinding {
   public final EditText phoneNumber;
 
   @NonNull
-  public final TextView tvTitle;
+  public final TextView tvProductCount;
 
   @NonNull
   public final CardView viewMap;
@@ -70,12 +77,13 @@ public final class OrderViewDesignBinding implements ViewBinding {
   @NonNull
   public final TextView viewMapText;
 
-  private OrderViewDesignBinding(@NonNull CardView rootView, @NonNull CardView acceptBtn,
+  private OrderViewDesignBinding(@NonNull ConstraintLayout rootView, @NonNull CardView acceptBtn,
       @NonNull TextView acptText, @NonNull LinearLayout actionRow, @NonNull CardView cardView,
       @NonNull TextView decText, @NonNull CardView declineBtn, @NonNull TextView delAddress,
-      @NonNull TextView delMethod, @NonNull TextView delTime, @NonNull ImageView imageview,
-      @NonNull CardView kmView, @NonNull TextView orderId, @NonNull EditText phoneNumber,
-      @NonNull TextView tvTitle, @NonNull CardView viewMap, @NonNull TextView viewMapText) {
+      @NonNull TextView delMethod, @NonNull TextView delTime, @NonNull CardView fab,
+      @NonNull ImageView imageview, @NonNull CardView kmView, @NonNull LinearLayout layoutCard,
+      @NonNull TextView orderId, @NonNull EditText phoneNumber, @NonNull TextView tvProductCount,
+      @NonNull CardView viewMap, @NonNull TextView viewMapText) {
     this.rootView = rootView;
     this.acceptBtn = acceptBtn;
     this.acptText = acptText;
@@ -86,18 +94,20 @@ public final class OrderViewDesignBinding implements ViewBinding {
     this.delAddress = delAddress;
     this.delMethod = delMethod;
     this.delTime = delTime;
+    this.fab = fab;
     this.imageview = imageview;
     this.kmView = kmView;
+    this.layoutCard = layoutCard;
     this.orderId = orderId;
     this.phoneNumber = phoneNumber;
-    this.tvTitle = tvTitle;
+    this.tvProductCount = tvProductCount;
     this.viewMap = viewMap;
     this.viewMapText = viewMapText;
   }
 
   @Override
   @NonNull
-  public CardView getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -176,6 +186,12 @@ public final class OrderViewDesignBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.fab;
+      CardView fab = ViewBindings.findChildViewById(rootView, id);
+      if (fab == null) {
+        break missingId;
+      }
+
       id = R.id.imageview;
       ImageView imageview = ViewBindings.findChildViewById(rootView, id);
       if (imageview == null) {
@@ -185,6 +201,12 @@ public final class OrderViewDesignBinding implements ViewBinding {
       id = R.id.km_view;
       CardView kmView = ViewBindings.findChildViewById(rootView, id);
       if (kmView == null) {
+        break missingId;
+      }
+
+      id = R.id.layout_card;
+      LinearLayout layoutCard = ViewBindings.findChildViewById(rootView, id);
+      if (layoutCard == null) {
         break missingId;
       }
 
@@ -200,9 +222,9 @@ public final class OrderViewDesignBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.tv_title;
-      TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
-      if (tvTitle == null) {
+      id = R.id.tv_product_count;
+      TextView tvProductCount = ViewBindings.findChildViewById(rootView, id);
+      if (tvProductCount == null) {
         break missingId;
       }
 
@@ -218,9 +240,9 @@ public final class OrderViewDesignBinding implements ViewBinding {
         break missingId;
       }
 
-      return new OrderViewDesignBinding((CardView) rootView, acceptBtn, acptText, actionRow,
-          cardView, decText, declineBtn, delAddress, delMethod, delTime, imageview, kmView, orderId,
-          phoneNumber, tvTitle, viewMap, viewMapText);
+      return new OrderViewDesignBinding((ConstraintLayout) rootView, acceptBtn, acptText, actionRow,
+          cardView, decText, declineBtn, delAddress, delMethod, delTime, fab, imageview, kmView,
+          layoutCard, orderId, phoneNumber, tvProductCount, viewMap, viewMapText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

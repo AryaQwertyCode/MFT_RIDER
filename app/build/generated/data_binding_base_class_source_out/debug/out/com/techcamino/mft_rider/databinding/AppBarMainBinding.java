@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -25,11 +26,16 @@ public final class AppBarMainBinding implements ViewBinding {
   @NonNull
   public final Toolbar toolbar;
 
+  @NonNull
+  public final TextView tvTitle;
+
   private AppBarMainBinding(@NonNull RelativeLayout rootView,
-      @NonNull ContentMainBinding orderListView, @NonNull Toolbar toolbar) {
+      @NonNull ContentMainBinding orderListView, @NonNull Toolbar toolbar,
+      @NonNull TextView tvTitle) {
     this.rootView = rootView;
     this.orderListView = orderListView;
     this.toolbar = toolbar;
+    this.tvTitle = tvTitle;
   }
 
   @Override
@@ -72,7 +78,14 @@ public final class AppBarMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new AppBarMainBinding((RelativeLayout) rootView, binding_orderListView, toolbar);
+      id = R.id.tv_title;
+      TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvTitle == null) {
+        break missingId;
+      }
+
+      return new AppBarMainBinding((RelativeLayout) rootView, binding_orderListView, toolbar,
+          tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
