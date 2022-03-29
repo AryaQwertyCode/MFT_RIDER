@@ -54,6 +54,9 @@ public final class OrderViewDesignBinding implements ViewBinding {
   public final CardView fab;
 
   @NonNull
+  public final CardView fabMap;
+
+  @NonNull
   public final ImageView imageview;
 
   @NonNull
@@ -81,9 +84,9 @@ public final class OrderViewDesignBinding implements ViewBinding {
       @NonNull TextView acptText, @NonNull LinearLayout actionRow, @NonNull CardView cardView,
       @NonNull TextView decText, @NonNull CardView declineBtn, @NonNull TextView delAddress,
       @NonNull TextView delMethod, @NonNull TextView delTime, @NonNull CardView fab,
-      @NonNull ImageView imageview, @NonNull CardView kmView, @NonNull LinearLayout layoutCard,
-      @NonNull TextView orderId, @NonNull EditText phoneNumber, @NonNull TextView tvProductCount,
-      @NonNull CardView viewMap, @NonNull TextView viewMapText) {
+      @NonNull CardView fabMap, @NonNull ImageView imageview, @NonNull CardView kmView,
+      @NonNull LinearLayout layoutCard, @NonNull TextView orderId, @NonNull EditText phoneNumber,
+      @NonNull TextView tvProductCount, @NonNull CardView viewMap, @NonNull TextView viewMapText) {
     this.rootView = rootView;
     this.acceptBtn = acceptBtn;
     this.acptText = acptText;
@@ -95,6 +98,7 @@ public final class OrderViewDesignBinding implements ViewBinding {
     this.delMethod = delMethod;
     this.delTime = delTime;
     this.fab = fab;
+    this.fabMap = fabMap;
     this.imageview = imageview;
     this.kmView = kmView;
     this.layoutCard = layoutCard;
@@ -192,6 +196,12 @@ public final class OrderViewDesignBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.fab_map;
+      CardView fabMap = ViewBindings.findChildViewById(rootView, id);
+      if (fabMap == null) {
+        break missingId;
+      }
+
       id = R.id.imageview;
       ImageView imageview = ViewBindings.findChildViewById(rootView, id);
       if (imageview == null) {
@@ -241,8 +251,8 @@ public final class OrderViewDesignBinding implements ViewBinding {
       }
 
       return new OrderViewDesignBinding((ConstraintLayout) rootView, acceptBtn, acptText, actionRow,
-          cardView, decText, declineBtn, delAddress, delMethod, delTime, fab, imageview, kmView,
-          layoutCard, orderId, phoneNumber, tvProductCount, viewMap, viewMapText);
+          cardView, decText, declineBtn, delAddress, delMethod, delTime, fab, fabMap, imageview,
+          kmView, layoutCard, orderId, phoneNumber, tvProductCount, viewMap, viewMapText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

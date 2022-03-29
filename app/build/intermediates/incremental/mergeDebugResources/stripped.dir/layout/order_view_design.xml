@@ -34,6 +34,11 @@
                 app:cardElevation="0dp"
                 app:cardBackgroundColor="@color/peach">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
                 <ImageView
                     android:id="@+id/imageview"
                     android:layout_width="match_parent"
@@ -46,9 +51,11 @@
                     android:layout_height="28dp"
                     app:cardCornerRadius="19dp"
                     app:cardElevation="6dp"
+                    android:layout_alignParentRight="true"
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="10dp"
                     android:id="@+id/fab"
+                    android:visibility="gone"
                     android:backgroundTint="@color/grey"
                     android:background="@color/blue">
                     <TextView
@@ -63,6 +70,26 @@
                         />
                 </androidx.cardview.widget.CardView>
 
+                    <androidx.cardview.widget.CardView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    app:cardCornerRadius="19dp"
+                    app:cardElevation="6dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/fab_map"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:backgroundTint="@color/grey"
+                    android:background="@color/blue">
+                    <com.mikhaellopez.circularimageview.CircularImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/map"
+
+                        />
+                </androidx.cardview.widget.CardView>
+                </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
@@ -143,12 +170,13 @@
                     android:layout_marginBottom="@dimen/three"
                     android:gravity="bottom"
                     android:orientation="horizontal">
+
                     <androidx.cardview.widget.CardView
                         android:id="@+id/decline_btn"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="@dimen/thirty"
-                        android:layout_marginStart="@dimen/ten"
+                        android:layout_marginStart="@dimen/fifteen"
                         android:layout_marginEnd="@dimen/ten"
                         app:cardBackgroundColor="@color/grey"
                         app:cardCornerRadius="@dimen/radius"
@@ -161,6 +189,7 @@
                             android:gravity="center|center_vertical|center_horizontal"
                             android:text="@string/view_order"
                             android:textColor="@color/white"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
@@ -201,6 +230,7 @@
                             android:layout_height="match_parent"
                             android:gravity="center|center_vertical|center_horizontal"
                             android:text="@string/btn_pickeUp"
+                            android:textSize="14sp"
                             android:textColor="@color/white"
                             android:textStyle="bold" />
                     </androidx.cardview.widget.CardView>

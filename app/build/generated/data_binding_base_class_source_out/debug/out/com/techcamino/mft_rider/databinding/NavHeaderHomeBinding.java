@@ -4,6 +4,7 @@ package com.techcamino.mft_rider.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,15 +25,20 @@ public final class NavHeaderHomeBinding implements ViewBinding {
   public final CircularImageView imageView;
 
   @NonNull
+  public final LinearLayout layout;
+
+  @NonNull
   public final TextView mobile;
 
   @NonNull
   public final TextView userName;
 
   private NavHeaderHomeBinding(@NonNull ConstraintLayout rootView,
-      @NonNull CircularImageView imageView, @NonNull TextView mobile, @NonNull TextView userName) {
+      @NonNull CircularImageView imageView, @NonNull LinearLayout layout, @NonNull TextView mobile,
+      @NonNull TextView userName) {
     this.rootView = rootView;
     this.imageView = imageView;
+    this.layout = layout;
     this.mobile = mobile;
     this.userName = userName;
   }
@@ -70,6 +76,12 @@ public final class NavHeaderHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.layout;
+      LinearLayout layout = ViewBindings.findChildViewById(rootView, id);
+      if (layout == null) {
+        break missingId;
+      }
+
       id = R.id.mobile;
       TextView mobile = ViewBindings.findChildViewById(rootView, id);
       if (mobile == null) {
@@ -82,7 +94,8 @@ public final class NavHeaderHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      return new NavHeaderHomeBinding((ConstraintLayout) rootView, imageView, mobile, userName);
+      return new NavHeaderHomeBinding((ConstraintLayout) rootView, imageView, layout, mobile,
+          userName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

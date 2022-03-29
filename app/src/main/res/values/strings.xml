@@ -10,6 +10,8 @@
     <string name="help_number">+98711 41000</string>
     <string name="access_token">access_token</string>
     <string name="logout">Logout</string>
+    <string name="drawer_open" translatable="false">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
 
     <!-- Otp Screen -->
     <string name="otp_title">Please enter 6 digit pin</string>
@@ -25,6 +27,7 @@
     <!-- Menu item -->
     <string name="delivered">Delivered</string>
     <string name="accepted_order">Accepted Order</string>
+    <string name="pickedUp">Picked Up</string>
     <string name="pending_order">Pending Order</string>
     <string name="all">All</string>
 

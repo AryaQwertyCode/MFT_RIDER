@@ -8,9 +8,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.techcamino.mft_rider.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -21,19 +22,32 @@ public final class AppBarMainBinding implements ViewBinding {
   private final RelativeLayout rootView;
 
   @NonNull
+  public final AppBarLayout appbarlayoutlll;
+
+  @NonNull
   public final ContentMainBinding orderListView;
 
   @NonNull
-  public final Toolbar toolbar;
+  public final RelativeLayout relativeLayout;
+
+  @NonNull
+  public final RelativeLayout relativeLayoutone;
+
+  @NonNull
+  public final MaterialToolbar toolbar;
 
   @NonNull
   public final TextView tvTitle;
 
-  private AppBarMainBinding(@NonNull RelativeLayout rootView,
-      @NonNull ContentMainBinding orderListView, @NonNull Toolbar toolbar,
+  private AppBarMainBinding(@NonNull RelativeLayout rootView, @NonNull AppBarLayout appbarlayoutlll,
+      @NonNull ContentMainBinding orderListView, @NonNull RelativeLayout relativeLayout,
+      @NonNull RelativeLayout relativeLayoutone, @NonNull MaterialToolbar toolbar,
       @NonNull TextView tvTitle) {
     this.rootView = rootView;
+    this.appbarlayoutlll = appbarlayoutlll;
     this.orderListView = orderListView;
+    this.relativeLayout = relativeLayout;
+    this.relativeLayoutone = relativeLayoutone;
     this.toolbar = toolbar;
     this.tvTitle = tvTitle;
   }
@@ -65,6 +79,12 @@ public final class AppBarMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.appbarlayoutlll;
+      AppBarLayout appbarlayoutlll = ViewBindings.findChildViewById(rootView, id);
+      if (appbarlayoutlll == null) {
+        break missingId;
+      }
+
       id = R.id.order_list_view;
       View orderListView = ViewBindings.findChildViewById(rootView, id);
       if (orderListView == null) {
@@ -72,8 +92,16 @@ public final class AppBarMainBinding implements ViewBinding {
       }
       ContentMainBinding binding_orderListView = ContentMainBinding.bind(orderListView);
 
+      id = R.id.relative_layout;
+      RelativeLayout relativeLayout = ViewBindings.findChildViewById(rootView, id);
+      if (relativeLayout == null) {
+        break missingId;
+      }
+
+      RelativeLayout relativeLayoutone = (RelativeLayout) rootView;
+
       id = R.id.toolbar;
-      Toolbar toolbar = ViewBindings.findChildViewById(rootView, id);
+      MaterialToolbar toolbar = ViewBindings.findChildViewById(rootView, id);
       if (toolbar == null) {
         break missingId;
       }
@@ -84,8 +112,8 @@ public final class AppBarMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new AppBarMainBinding((RelativeLayout) rootView, binding_orderListView, toolbar,
-          tvTitle);
+      return new AppBarMainBinding((RelativeLayout) rootView, appbarlayoutlll,
+          binding_orderListView, relativeLayout, relativeLayoutone, toolbar, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

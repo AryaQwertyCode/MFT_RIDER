@@ -2,28 +2,57 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayoutone"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.HomeActivity">
 
-    <androidx.appcompat.widget.Toolbar
+
+    <!--<androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@drawable/toolbar_background"
         android:elevation="0dp"
         android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.Mytoolbar">
+        android:theme="@style/AppTheme.Mytoolbar"/>-->
 
-        <!--<TextView
+
+    <RelativeLayout
+        android:id="@+id/relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbarlayoutlll"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/app_name"
-            android:textSize="@dimen/eighteen"
-            android:gravity = "center"
-            android:id="@+id/toolbar_title" />-->
+            android:layout_height="wrap_content">
 
-    </androidx.appcompat.widget.Toolbar>
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:navigationIcon="@drawable/ic_baseline_menu_24"
+                android:background="@drawable/toolbar_background"
+                android:theme="@style/AppTheme.Mytoolbar"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/logo"
+                    android:paddingRight="200dp"
+                    />
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+
+    </RelativeLayout>
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,14 +60,15 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="20dp"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/relative_layout"
         android:text="Delivered"
         />
+
     <include
         android:id="@+id/order_list_view"
+        layout="@layout/content_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        layout="@layout/content_main"
-        android:layout_below="@+id/tv_title"/>
+        android:layout_below="@+id/tv_title" />
 
 </RelativeLayout>

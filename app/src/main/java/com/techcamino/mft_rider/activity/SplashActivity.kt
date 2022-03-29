@@ -20,17 +20,10 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        shared =
-            getSharedPreferences(
-                this@SplashActivity.resources.getString(R.string.app_name),
-                Context.MODE_PRIVATE
-            )
-        token =
-            shared.getString(this@SplashActivity.resources.getString(R.string.access_token), "")!!
-        mobile =
-            shared.getString("mobile", "")!!
-        name =
-            shared.getString(this@SplashActivity.resources.getString(R.string.user_name), "")!!
+        shared = getSharedPreferences(this@SplashActivity.resources.getString(R.string.app_name), Context.MODE_PRIVATE)
+        token = shared.getString(this@SplashActivity.resources.getString(R.string.access_token), "")!!
+        mobile = shared.getString("mobile", "")!!
+        name = shared.getString(this@SplashActivity.resources.getString(R.string.user_name), "")!!
 
         lifecycleScope.launch {
             delay(3000L)
@@ -58,5 +51,6 @@ class SplashActivity : AppCompatActivity() {
             }
 
         }
+
     }
 }

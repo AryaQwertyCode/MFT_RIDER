@@ -189,10 +189,12 @@ abstract class BaseActivity : AppCompatActivity() {
         // Create an image file name
         //val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         val storageDir: File? = getAppSpecificAlbumStorageDir(this, Environment.DIRECTORY_PICTURES,dirName)
+
 //        return File.createTempFile(
 //            fileName, /* prefix */
 //            ".jpg", /* suffix */
 //            storageDir /* directory */
+
         return File(storageDir, "$fileName.jpg"
         ).apply {
             // Save a file: path for use with ACTION_VIEW intents

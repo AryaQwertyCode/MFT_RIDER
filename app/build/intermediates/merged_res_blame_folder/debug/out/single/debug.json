@@ -40,6 +40,10 @@
         "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\app_bar_main.xml"
     },
     {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_menu_24.xml.flat",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\drawable\\ic_baseline_menu_24.xml"
+    },
+    {
         "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\layout_order_view_design.xml.flat",
         "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\order_view_design.xml"
     },
@@ -82,6 +86,10 @@
     {
         "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_map.webp.flat",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\drawable-v24\\map.webp"
     },
     {
         "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_round.webp.flat",
@@ -200,6 +208,10 @@
         "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_logo.png.flat",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\drawable-v24\\logo.png"
+    },
+    {
         "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_otp.xml.flat",
         "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\activity_otp.xml"
     },
@@ -294,6 +306,10 @@
     {
         "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
         "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\drawable_round_outline.xml.flat",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\drawable\\round_outline.xml"
     },
     {
         "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_baseline_shopping_cart_24.xml.flat",

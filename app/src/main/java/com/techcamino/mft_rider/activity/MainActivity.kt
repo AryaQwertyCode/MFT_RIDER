@@ -175,13 +175,14 @@ class MainActivity : AppCompatActivity() {
         token: String,
         imageUrl: File,
     ) {
+
         try {
 
             Log.d("uploading", "uploading image started ${imageUrl.name}")
 
             // Parsing any Media type file
-
             // Parsing any Media type file
+
             val builder = MultipartBody.Builder()
             builder.setType(MultipartBody.FORM)
 
@@ -223,6 +224,7 @@ class MainActivity : AppCompatActivity() {
             e.stackTrace
             Log.d("Exception", "Image upload failed" + e.printStackTrace())
         }
+
     }
 
 
