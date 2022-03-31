@@ -71,7 +71,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
 
     fun getImageDirectoryPath(dirName:String): String{
-        return Environment.DIRECTORY_PICTURES + File.separator + dirName
+        return  Environment.DIRECTORY_PICTURES + File.separator + dirName
     }
 
     fun getAudioDirectoryPath(): String{

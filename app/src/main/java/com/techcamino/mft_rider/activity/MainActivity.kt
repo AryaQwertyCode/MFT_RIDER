@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.google.gson.Gson
@@ -198,18 +199,20 @@ class MainActivity : AppCompatActivity() {
                 RequestBody.create(MediaType.parse("multipart/form-data"), imageUrl)
             )
 
-            val requestBody = builder.build()
+            var requestBody = builder.build()
 
-            var upload =
-                apiService.uploadImage("Bearer $token", requestBody)
+            var upload = apiService.uploadImage("Bearer $token", requestBody)
+
             upload.enqueue(object : Callback<MessageDetail> {
                 override fun onResponse(
                     call: Call<MessageDetail>,
                     response: Response<MessageDetail>
                 ) {
                     if (response.isSuccessful) {
+
                         Log.d("Success", "Image uploaded")
                     } else {
+
                         Log.d("Failed", "Image not uploaded")
                     }
 

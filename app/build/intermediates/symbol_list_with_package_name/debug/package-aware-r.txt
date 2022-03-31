@@ -2611,6 +2611,7 @@ drawable ic_mtrl_chip_close_circle
 drawable ic_outline_phone_24
 drawable login_bg
 drawable logo
+drawable logotxt
 drawable m3_appbar_background
 drawable m3_popupmenu_background_overlay
 drawable m3_radiobutton_ripple
@@ -2812,6 +2813,8 @@ id collapseActionView
 id compress
 id confirm_button
 id constraint
+id constraint_layout
+id constrant_layout
 id container
 id content
 id contentPanel
@@ -3022,6 +3025,7 @@ id navigation_bar_item_labels_group
 id navigation_bar_item_large_label_view
 id navigation_bar_item_small_label_view
 id navigation_header_container
+id nested_scrollView
 id never
 id neverCompleteToEnd
 id neverCompleteToStart

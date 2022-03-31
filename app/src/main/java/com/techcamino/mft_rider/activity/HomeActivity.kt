@@ -2,6 +2,7 @@ package com.techcamino.mft_rider.activity
 
 
 import android.app.Dialog
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -56,6 +57,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private lateinit var orderData: Order.Result.Orders
    private var mToggle: ActionBarDrawerToggle?=null
     private lateinit var mDrawerLayout: DrawerLayout
+ //   private lateinit var access_token :String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +72,9 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         apiService = ApiClient.apiInterface
         shared = getSharedPreferences(this@HomeActivity.resources.getString(R.string.app_name), Context.MODE_PRIVATE)
 
+        token = shared.getString(this@HomeActivity.resources.getString(R.string.access_token), "").toString()
+
+    //  access_token = intent.getStringExtra("access_token").toString()
       //  binding.appBar.toolbar.title = ""
 
         val headerView = binding.navView.getHeaderView(0)
@@ -118,13 +123,22 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onStart() {
-        token = shared.getString(this@HomeActivity.resources.getString(R.string.access_token), "")!!
+
+
+
+
         // call api to get orders
         getOrders(token, "all")
+        Log.d(TAG, "getOrders: $token")
+      //  access_token?.let { getOrders(it, "all") }
+     //  getOrders(access_token, "all")
         binding.appBar.tvTitle.text="All"
         // get all order history
+      //  access_token?.let { getOrderHistory(it) }
         getOrderHistory(token)
+        Log.d(TAG, "getOrderHistory: $token")
         super.onStart()
+
     }
 
     override fun findContentView(): Int {
@@ -152,9 +166,13 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun getOrderHistory(token: String) {
+
+        Log.d(TAG, "orderhistorytoken:-: ${token} ")
+
         try {
             dialog.show()
             val orderHistory = apiService.getOrderHistory("Bearer $token")
+            Log.d(TAG, "AuthorizationToken:-: $token")
             orderHistory.enqueue(object : Callback<Data> {
                 override fun onResponse(call: Call<Data>, response: Response<Data>) {
                     if (response.isSuccessful) {
@@ -165,7 +183,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                         }
 
                     } else {
-                         shared.edit().clear().commit()
+                      //   shared.edit().clear().commit()
                         Intent(
                             this@HomeActivity,
                             LoginActivity::class.java
@@ -193,8 +211,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private fun setMenuItemVal(orderHistory: OrderHistory) {
 
-        val item =
-            (binding.navView.menu.findItem(R.id.delivered).actionView) as TextView
+        val item = (binding.navView.menu.findItem(R.id.delivered).actionView) as TextView
         item.gravity = Gravity.CENTER_VERTICAL
         item.setTypeface(null, Typeface.BOLD)
         item.text = orderHistory.deliveredOrders.toString()
@@ -225,8 +242,11 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private fun getOrders(token: String, type: String) {
 
         try {
+
             dialog.show()
+
             val orders = apiService.getAllOrders("Bearer $token", type, "1")
+
             orders.enqueue(object : Callback<Order> {
                 override fun onResponse(call: Call<Order>, response: Response<Order>) {
                     if (response.isSuccessful) {
@@ -242,7 +262,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                         }
 
                     } else {
-                        shared.edit().clear().commit()
+                     //   shared?.edit()?.clear()?.commit()
                         Intent(
                             this@HomeActivity,
                             LoginActivity::class.java
@@ -340,7 +360,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.logout_layout -> {
-                shared.edit().clear().apply()
+              //  shared?.edit()?.clear()?.apply()
                 val logout = Intent(this@HomeActivity, LoginActivity::class.java)
                 startActivity(logout)
                 finish()
@@ -350,6 +370,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 if (!validateField()) return
                 Log.d("Reason", orderId)
                 updateOrderStatus(token, orderId, "decline", editText?.text?.trim().toString())
+              //  updateOrderStatus(access_token, orderId, "decline", editText?.text?.trim().toString())
                 orderData.riderStatus = "declined_orders"
                 binding.appBar.orderListView.dashboard.orderList.adapter?.notifyDataSetChanged()
                 bottomSheetDialog.dismiss()
@@ -400,6 +421,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             if (status && order.riderStatus?.lowercase() != "accepted_orders" && order.riderStatus?.lowercase() != "declined_orders") {
                 Log.d("state", "Order accepted $status")
                 updateOrderStatus(token, order.orderId!!, "accept", "Accepted")
+             //  updateOrderStatus(access_token, order.orderId!!, "accept", "Accepted")
                 order.riderStatus = "accepted_orders"
                 binding.appBar.orderListView.dashboard.orderList.adapter?.notifyDataSetChanged()
             }
@@ -479,9 +501,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         val submit = bottomSheetDialog.findViewById<CardView>(R.id.submit_decline)
         submit!!.setOnClickListener(this)
     }
-
     //appbar - toolbar button click
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {

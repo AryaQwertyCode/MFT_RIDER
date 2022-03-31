@@ -13,17 +13,19 @@
         android:orientation="horizontal"
         android:padding="5dp">
 
-        <RelativeLayout
-
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
                 android:layout_width="@dimen/hundred_twenty"
-                android:layout_height="@dimen/hundred_twenty"
+                android:layout_height="match_parent"
                 app:cardBackgroundColor="@color/peach"
+                android:layout_gravity="center"
                 app:cardCornerRadius="@dimen/radius"
                 app:cardElevation="0dp">
 
@@ -32,10 +34,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
+                    android:layout_gravity="center"
                     android:src="@drawable/logo" />
 
             </androidx.cardview.widget.CardView>
-        </RelativeLayout>
+        </LinearLayout>
 
 
         <LinearLayout

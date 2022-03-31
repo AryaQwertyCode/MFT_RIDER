@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.NestedScrollView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.techcamino.mft_rider.R;
@@ -28,6 +29,9 @@ public final class ActivityLoginBinding implements ViewBinding {
 
   @NonNull
   public final CardView cardView;
+
+  @NonNull
+  public final ConstraintLayout constraintLayout;
 
   @NonNull
   public final RelativeLayout footerCard;
@@ -48,6 +52,9 @@ public final class ActivityLoginBinding implements ViewBinding {
   public final RelativeLayout logoLayout;
 
   @NonNull
+  public final NestedScrollView nestedScrollView;
+
+  @NonNull
   public final EditText phoneNumber;
 
   @NonNull
@@ -57,19 +64,22 @@ public final class ActivityLoginBinding implements ViewBinding {
   public final TextView verify;
 
   private ActivityLoginBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView bgLogo,
-      @NonNull CardView cardView, @NonNull RelativeLayout footerCard, @NonNull TextView helpNumber,
-      @NonNull CardView loginBtn, @NonNull TextView loginTitle, @NonNull ImageView logo,
-      @NonNull RelativeLayout logoLayout, @NonNull EditText phoneNumber,
+      @NonNull CardView cardView, @NonNull ConstraintLayout constraintLayout,
+      @NonNull RelativeLayout footerCard, @NonNull TextView helpNumber, @NonNull CardView loginBtn,
+      @NonNull TextView loginTitle, @NonNull ImageView logo, @NonNull RelativeLayout logoLayout,
+      @NonNull NestedScrollView nestedScrollView, @NonNull EditText phoneNumber,
       @NonNull RelativeLayout relativeLayout, @NonNull TextView verify) {
     this.rootView = rootView;
     this.bgLogo = bgLogo;
     this.cardView = cardView;
+    this.constraintLayout = constraintLayout;
     this.footerCard = footerCard;
     this.helpNumber = helpNumber;
     this.loginBtn = loginBtn;
     this.loginTitle = loginTitle;
     this.logo = logo;
     this.logoLayout = logoLayout;
+    this.nestedScrollView = nestedScrollView;
     this.phoneNumber = phoneNumber;
     this.relativeLayout = relativeLayout;
     this.verify = verify;
@@ -114,6 +124,12 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.constraint_layout;
+      ConstraintLayout constraintLayout = ViewBindings.findChildViewById(rootView, id);
+      if (constraintLayout == null) {
+        break missingId;
+      }
+
       id = R.id.footer_card;
       RelativeLayout footerCard = ViewBindings.findChildViewById(rootView, id);
       if (footerCard == null) {
@@ -150,6 +166,12 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.nested_scrollView;
+      NestedScrollView nestedScrollView = ViewBindings.findChildViewById(rootView, id);
+      if (nestedScrollView == null) {
+        break missingId;
+      }
+
       id = R.id.phone_number;
       EditText phoneNumber = ViewBindings.findChildViewById(rootView, id);
       if (phoneNumber == null) {
@@ -168,8 +190,9 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityLoginBinding((ConstraintLayout) rootView, bgLogo, cardView, footerCard,
-          helpNumber, loginBtn, loginTitle, logo, logoLayout, phoneNumber, relativeLayout, verify);
+      return new ActivityLoginBinding((ConstraintLayout) rootView, bgLogo, cardView,
+          constraintLayout, footerCard, helpNumber, loginBtn, loginTitle, logo, logoLayout,
+          nestedScrollView, phoneNumber, relativeLayout, verify);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

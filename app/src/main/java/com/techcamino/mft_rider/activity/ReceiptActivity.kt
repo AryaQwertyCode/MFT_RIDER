@@ -403,11 +403,9 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
                     } else {
                         isDelivered = true
                     }
-
                     binding.deliveredBtn.isEnabled = isDelivered
                     if (dialog.isShowing)
                         dialog.dismiss()
-
                 }
 
                 override fun onFailure(call: Call<MessageDetail>, t: Throwable) {
@@ -450,26 +448,25 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
 
             val requestBody = builder.build()
 
-            val upload = apiService.uploadImage("Bearer $token", requestBody)
+            val upload =
+                apiService.uploadImage("Bearer $token", requestBody)
             upload.enqueue(object : Callback<MessageDetail> {
                 override fun onResponse(
                     call: Call<MessageDetail>,
                     response: Response<MessageDetail>
                 ) {
                     if (response.isSuccessful) {
-
                         isDelivered = true
                         showSnack(R.string.upload_image_success)
                         subOrder?.upImage = response.body()!!.result.vendorImage!!
-                        // subOrder?.upImage = pictureFilePath
+                        //subOrder?.upImage = pictureFilePath
+
                         binding.suborders.adapter?.notifyDataSetChanged()
 
                     } else {
-
                         isDelivered = false
                         showSnack(R.string.upload_image_failed)
                         Log.d("Failed", "Image not uploaded")
-
                     }
                     if (dialog.isShowing)
                         dialog.dismiss()
@@ -488,6 +485,7 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
                 dialog.dismiss()
             Log.d("Exception", "Image upload failed" + e.printStackTrace())
         }
+
     }
 
     private fun showSnack(message: Int) {
@@ -565,5 +563,4 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         Log.d("resume", "in resume")
         super.onResume()
     }
-
 }

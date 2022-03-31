@@ -2,8 +2,6 @@ package com.techcamino.mft_rider.services
 
 import android.app.*
 import android.content.Context
-import com.techcamino.mft_rider.services.LocationUpdatesService.LocalBinder
-import com.techcamino.mft_rider.services.LocationUpdatesService
 import com.techcamino.mft_rider.R
 import android.content.Intent
 import android.content.res.Configuration
@@ -13,7 +11,6 @@ import android.util.Log
 import com.techcamino.mft_rider.activity.MainActivity
 import androidx.core.app.NotificationCompat
 import com.google.android.gms.location.*
-import com.google.android.gms.tasks.OnCompleteListener
 import com.techcamino.mft_rider.utils.Utils
 
 class LocationUpdatesService : Service() {

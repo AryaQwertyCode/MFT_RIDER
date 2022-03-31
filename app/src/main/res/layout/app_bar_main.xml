@@ -7,17 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".activity.HomeActivity">
 
-
-    <!--<androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/toolbar_background"
-        android:elevation="0dp"
-        android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.Mytoolbar"/>-->
-
-
     <RelativeLayout
         android:id="@+id/relative_layout"
         android:layout_width="match_parent"
@@ -40,7 +29,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/logo"
+                    android:src="@drawable/logotxt"
                     android:paddingRight="200dp"
                     />
 
@@ -49,20 +38,19 @@
         </com.google.android.material.appbar.AppBarLayout>
 
 
-
     </RelativeLayout>
 
 
     <TextView
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_title"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="20dp"
         android:layout_below="@+id/relative_layout"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="18dp"
         android:text="Delivered"
-        />
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <include
         android:id="@+id/order_list_view"

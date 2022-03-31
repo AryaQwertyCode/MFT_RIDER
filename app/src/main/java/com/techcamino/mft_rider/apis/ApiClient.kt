@@ -9,9 +9,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object ApiClient {
-  //  val baseUrl = "https://partner.myflowertree.com/"//""https://quotable.io/"
 
-    val baseUrl = "http://15.207.232.245/vendors/" //""https://quotable.io/" // http://15.207.232.245/vendors/riderapp/api/loginRider
+   // val baseUrl = "https://partner.myflowertree.com/"//""https://quotable.io/"
+
+    val baseUrl = "https://partner.myflowertree.com"//""https://quotable.io/"
+
+  //  val baseUrl = "http://15.207.192.120" //""https://quotable.io/"
+
+//   val baseUrl = "http://15.207.232.245/vendors/" //""https://quotable.io/" // http://15.207.232.245/vendors/riderapp/api/loginRider
+
 
     val apiInterface: ApiInterface
 

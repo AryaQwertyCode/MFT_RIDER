@@ -160,6 +160,10 @@
         "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\myflowertree_logo.png"
     },
     {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_logotxt.png.flat",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\drawable-v24\\logotxt.png"
+    },
+    {
         "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\layout_nav_header_home.xml.flat",
         "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\nav_header_home.xml"
     },
@@ -206,10 +210,6 @@
     {
         "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.webp"
-    },
-    {
-        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_logo.png.flat",
-        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\drawable-v24\\logo.png"
     },
     {
         "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_otp.xml.flat",

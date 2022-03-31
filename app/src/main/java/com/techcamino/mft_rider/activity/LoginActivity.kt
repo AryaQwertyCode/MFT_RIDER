@@ -86,7 +86,6 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
     private fun checkRider() {
 
-
         try {
             dialog.show()
             var rider = apiService.checkRider(binding.phoneNumber.text.toString().trim())

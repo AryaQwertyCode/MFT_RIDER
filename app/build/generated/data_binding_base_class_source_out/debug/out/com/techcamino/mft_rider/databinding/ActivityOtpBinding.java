@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.NestedScrollView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.techcamino.mft_rider.R;
@@ -30,6 +31,9 @@ public final class ActivityOtpBinding implements ViewBinding {
   public final CardView cardView;
 
   @NonNull
+  public final ConstraintLayout constrantLayout;
+
+  @NonNull
   public final RelativeLayout footerCard;
 
   @NonNull
@@ -37,6 +41,9 @@ public final class ActivityOtpBinding implements ViewBinding {
 
   @NonNull
   public final RelativeLayout logoLayout;
+
+  @NonNull
+  public final NestedScrollView nestedScrollView;
 
   @NonNull
   public final EditText otpNumber;
@@ -54,16 +61,19 @@ public final class ActivityOtpBinding implements ViewBinding {
   public final TextView verify;
 
   private ActivityOtpBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView bgLogo,
-      @NonNull CardView cardView, @NonNull RelativeLayout footerCard, @NonNull ImageView logo,
-      @NonNull RelativeLayout logoLayout, @NonNull EditText otpNumber, @NonNull TextView otpTitle,
-      @NonNull CardView otpVerify, @NonNull RelativeLayout relativeLayout,
-      @NonNull TextView verify) {
+      @NonNull CardView cardView, @NonNull ConstraintLayout constrantLayout,
+      @NonNull RelativeLayout footerCard, @NonNull ImageView logo,
+      @NonNull RelativeLayout logoLayout, @NonNull NestedScrollView nestedScrollView,
+      @NonNull EditText otpNumber, @NonNull TextView otpTitle, @NonNull CardView otpVerify,
+      @NonNull RelativeLayout relativeLayout, @NonNull TextView verify) {
     this.rootView = rootView;
     this.bgLogo = bgLogo;
     this.cardView = cardView;
+    this.constrantLayout = constrantLayout;
     this.footerCard = footerCard;
     this.logo = logo;
     this.logoLayout = logoLayout;
+    this.nestedScrollView = nestedScrollView;
     this.otpNumber = otpNumber;
     this.otpTitle = otpTitle;
     this.otpVerify = otpVerify;
@@ -110,6 +120,12 @@ public final class ActivityOtpBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.constrant_layout;
+      ConstraintLayout constrantLayout = ViewBindings.findChildViewById(rootView, id);
+      if (constrantLayout == null) {
+        break missingId;
+      }
+
       id = R.id.footer_card;
       RelativeLayout footerCard = ViewBindings.findChildViewById(rootView, id);
       if (footerCard == null) {
@@ -125,6 +141,12 @@ public final class ActivityOtpBinding implements ViewBinding {
       id = R.id.logo_layout;
       RelativeLayout logoLayout = ViewBindings.findChildViewById(rootView, id);
       if (logoLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.nested_scrollView;
+      NestedScrollView nestedScrollView = ViewBindings.findChildViewById(rootView, id);
+      if (nestedScrollView == null) {
         break missingId;
       }
 
@@ -158,8 +180,9 @@ public final class ActivityOtpBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityOtpBinding((ConstraintLayout) rootView, bgLogo, cardView, footerCard, logo,
-          logoLayout, otpNumber, otpTitle, otpVerify, relativeLayout, verify);
+      return new ActivityOtpBinding((ConstraintLayout) rootView, bgLogo, cardView, constrantLayout,
+          footerCard, logo, logoLayout, nestedScrollView, otpNumber, otpTitle, otpVerify,
+          relativeLayout, verify);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

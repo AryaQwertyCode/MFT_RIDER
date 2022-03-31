@@ -5,8 +5,11 @@
       <map>
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/drawable/badge_background.xml" value="0.1555" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/drawable/bg.xml" value="0.1555" />
+        <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/drawable/bg_gradient.xml" value="0.2165" />
+        <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/drawable/capsule.xml" value="0.2165" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/drawable/ic_baseline_fiber_pin_24.xml" value="0.1555" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.169" />
+        <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/drawable/myflowertree_logo.xml" value="0.2165" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/drawable/round_outline.xml" value="0.1235" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/drawable/side_nav_round.xml" value="0.2245" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/drawable/splash_background.xml" value="0.1235" />
@@ -14,7 +17,9 @@
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/drawable/toolbar_icon.xml" value="0.1555" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/drawable/top_separator.xml" value="0.1555" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/layout/activity_home.xml" value="0.12158054711246201" />
+        <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/layout/activity_otp.xml" value="0.25" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/layout/activity_receipt.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/layout/activity_splash.xml" value="0.25" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/layout/app_bar_main.xml" value="0.176" />
@@ -22,8 +27,10 @@
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/layout/content_main.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/layout/dashboard.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/layout/nav_header_home.xml" value="0.25" />
-        <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/layout/order_view_design.xml" value="0.12158054711246201" />
+        <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/layout/order_view_design.xml" value="0.4" />
+        <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/layout/placeholder.xml" value="0.25" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/layout/suborder_view_design.xml" value="0.22826086956521738" />
+        <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/layout/toolbar.xml" value="0.17527173913043478" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/menu/activity_home_drawer.xml" value="0.25" />
         <entry key="..\:/AndroidProject/QwertyCode/mft_rider/app/src/main/res/menu/main.xml" value="0.25" />
       </map>

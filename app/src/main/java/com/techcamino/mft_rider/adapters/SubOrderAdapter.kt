@@ -1,5 +1,6 @@
 package com.techcamino.mft_rider.adapters
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -66,6 +67,7 @@ class SubOrderAdapter(
             .centerCrop()
             .error(R.drawable.ic_baseline_camera_alt_24)
             .into(holder.uImageView)
+
         holder.orderId.text = "#${order.subOrderId}"
 
 
@@ -85,15 +87,20 @@ class SubOrderAdapter(
         val accept: CardView = itemView.findViewById(R.id.accept_btn)
         val placeholder: LinearLayout = itemView.findViewById(R.id.placeholder)
         val uImageView: ImageView = itemView.findViewById(R.id.suborder_image)
+
         fun bind(item: OrderDetail.Result.OrderInfo.Detail, listener: OnItemClickListener) {
+
             accept.setOnClickListener {
                 listener.onItemClick(
                     item,uImageView
                 )
             }
+
             placeholder.setOnClickListener{
                 listener.onItemClick(item,imageView)
+                Log.d(TAG, "bindhello: $imageView")
             }
+
         }
     }
 }
