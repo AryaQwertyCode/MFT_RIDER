@@ -49,6 +49,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
 import com.bumptech.glide.load.resource.bitmap.TransformationUtils.rotateImage
+import java.io.ByteArrayOutputStream
 
 
 class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultListener,
@@ -139,7 +140,9 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         } else {
 
             if (this.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)) {
+
                 clickPhoto(REQUEST_IMAGE_CAPTURE_WITHOUT_SCALE)
+
             } else {
                 Toast.makeText(this, "No camera available on this device.", Toast.LENGTH_LONG)
                     .show()
@@ -176,57 +179,76 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
      */
     private fun clickPhoto(requestCode: Int) {
 
-        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        takePictureIntent.resolveActivity(packageManager)?.also {
-            // Create the File where the photo should go
-            val photoFile: File? = try {
-                getPictureFile(subOrder?.subOrderId!!, "mft")
-            } catch (ex: IOException) {
-                Toast.makeText(this, "${ex.message}", Toast.LENGTH_LONG).show()
-                null
-            }
-            // Continue only if the File was successfully created
-            photoFile?.also {
-                val photoURI: Uri = FileProvider.getUriForFile(
-                    this,
-                    "techcamino.mft_rider.provider",
-                    it
-                )
+        val takePictureIntent = Intent()
 
-                mimeType = "image/*"
-                val values = ContentValues().apply {
-                    put(MediaStore.Images.Media.DISPLAY_NAME, getNewFileName(order?.orderId!!))
-                    put(MediaStore.Images.Media.MIME_TYPE, mimeType)
-                    put(
-                        MediaStore.Images.Media.RELATIVE_PATH,
-                        getImageDirectoryPath(this@ReceiptActivity.resources.getString(R.string.app_name))
-                    )
-                }
+      //  val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        takePictureIntent.action = MediaStore.ACTION_IMAGE_CAPTURE
 
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                    Log.d("into if", photoURI.toString())
-                } else {
 
-                    val imageUri =
-                        contentResolver.insert(
-                            MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL),
-                            values
-                        )
-                    Log.d("into elese", photoFile.toString())
-                    if (imageUri != null) {
+      /* if(takePictureIntent.resolveActivity(this.packageManager)!=null){*/
 
-                        pictureFilePath = imageUri.toString()
-                        shareUri = imageUri
-                        Log.d("avinash", pictureFilePath!!)
-                    }
+           takePictureIntent.resolveActivity(packageManager)?.also {
+               // Create the File where the photo should go
+               val photoFile: File? =
+               try {
+                   getPictureFile(subOrder?.subOrderId!!, "mft")
+               } catch (ex: IOException) {
 
-                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
-                }
-                initRequestCode(takePictureIntent, requestCode)
+                   Toast.makeText(this, "${ex.message}", Toast.LENGTH_LONG).show()
+                   null
 
-            }
-        }
+               }
+
+
+
+               // Continue only if the File was successfully created
+               photoFile?.also {
+
+
+                   val photoURI: Uri = FileProvider.getUriForFile(
+                       this,
+                       "techcamino.mft_rider.provider",
+                       it
+                   )
+
+                   mimeType = "image/*"
+                   val values = ContentValues().apply {
+                       put(MediaStore.Images.Media.DISPLAY_NAME, getNewFileName(order?.orderId!!))
+                       put(MediaStore.Images.Media.MIME_TYPE, mimeType)
+                       put(
+                           MediaStore.Images.Media.RELATIVE_PATH,
+                           getImageDirectoryPath(this@ReceiptActivity.resources.getString(R.string.app_name))
+                       )
+                   }
+
+                   if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                       takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+                       Log.d("into if", photoURI.toString())
+                   } else {
+
+                       val imageUri =
+                           contentResolver.insert(
+                               MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL),
+                               values
+                           )
+                       Log.d("into elese", photoFile.toString())
+                       if (imageUri != null) {
+                           pictureFilePath = imageUri.toString()
+                           shareUri = imageUri
+                           Log.d("avinash", pictureFilePath!!)
+                       }
+
+                       takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
+                   }
+                   initRequestCode(takePictureIntent, requestCode)
+               }
+
+
+           }
+       /*}else{
+           Toast.makeText(this,"Could not flound application to capture the Photo",Toast.LENGTH_LONG).show()
+       }*/
+
     }
 
     private fun initRequestCode(takePictureIntent: Intent, requestImageCapture: Int) {
@@ -239,7 +261,8 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         result: ActivityResult,
         currentRequestCode: Int
     ) {
-        Log.d("testing file name", pictureFilePath!!)
+
+     //   Log.d("testing file name", pictureFilePath!!)
 
         if (currentRequestCode == REQUEST_IMAGE_CAPTURE_WITHOUT_SCALE) {
 
@@ -258,23 +281,30 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
 
             val file: File = File(pictureFilePath)
             try {
+
+
                 var bitmap = BitmapFactory.decodeFile(file.path)
+
+                var image_width = bitmap.width
+                var image_height = bitmap.height
+
                 bitmap = degreeRotate(rotation(bitmap, file), 0f)
-                bitmap.compress(
-                    Bitmap.CompressFormat.JPEG,
-                    compressionRatio,
-                    FileOutputStream(file)
-                )
+
+                if(image_width>image_height){
+                   var  outputStream = ByteArrayOutputStream()
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, compressionRatio, outputStream)
+                }
+
+            //    bitmap.compress(Bitmap.CompressFormat.JPEG, compressionRatio, FileOutputStream(file))
+
+              //  bitmap.recycle()
+
             } catch (t: Throwable) {
                 Log.e("ERROR", "Error compressing file.$t")
                 t.printStackTrace()
             }
 
-            uploadImage(
-                token,
-                subOrder?.subOrderId!!,
-                File(pictureFilePath!!)
-            )
+            uploadImage(token, subOrder?.subOrderId!!, File(pictureFilePath!!))
         }
 
     }
@@ -390,6 +420,7 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         try {
             dialog.show()
             val markDeliver = apiService.markDelevered("Bearer $token", orderId)
+
             markDeliver.enqueue(object : Callback<MessageDetail> {
                 override fun onResponse(
                     call: Call<MessageDetail>,
@@ -426,11 +457,10 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         orderId: String,
         imageUrl: File
     ) {
-        try {
 
+        try {
             dialog.show()
             Log.d("uploading", "uploading image started ${imageUrl.name}")
-
             // Parsing any Media type file
             val builder = MultipartBody.Builder()
             builder.setType(MultipartBody.FORM)
@@ -447,9 +477,7 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
             )
 
             val requestBody = builder.build()
-
-            val upload =
-                apiService.uploadImage("Bearer $token", requestBody)
+            val upload = apiService.uploadImage("Bearer $token", requestBody)
             upload.enqueue(object : Callback<MessageDetail> {
                 override fun onResponse(
                     call: Call<MessageDetail>,
@@ -478,6 +506,7 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
                     if (dialog.isShowing)
                         dialog.dismiss()
                 }
+
             })
         } catch (e: Exception) {
             e.stackTrace
@@ -563,4 +592,6 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         Log.d("resume", "in resume")
         super.onResume()
     }
+
+
 }

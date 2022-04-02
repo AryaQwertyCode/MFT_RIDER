@@ -115,17 +115,12 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     }
 
-
-
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         mToggle!!.syncState()
     }
 
     override fun onStart() {
-
-
-
 
         // call api to get orders
         getOrders(token, "all")

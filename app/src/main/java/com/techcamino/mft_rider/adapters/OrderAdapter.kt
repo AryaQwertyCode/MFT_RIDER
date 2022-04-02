@@ -16,6 +16,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.techcamino.mft_rider.R
+import com.techcamino.mft_rider.databinding.OrderViewDesignBinding
 import com.techcamino.mft_rider.models.orders.Order
 
 class OrderAdapter(
@@ -37,6 +38,9 @@ class OrderAdapter(
 
         // inflates the card_view_design view
         // that is used to hold list item
+
+     /*  val inflater = LayoutInflater.from(context)
+       val binding = OrderViewDesignBinding.inflate(inflater,parent,false)*/
 
         val view = LayoutInflater.from(parent.context).inflate(R.layout.order_view_design, parent, false)
 
@@ -153,6 +157,9 @@ class OrderAdapter(
         val tv_product_count : TextView= itemView.findViewById(R.id.tv_product_count)
         val actionRow:LinearLayout = itemView.findViewById(R.id.action_row)
 
+
+
+
         fun bind(item: Order.Result.Orders, listener: OnItemClickListener) {
 
             itemView.setOnClickListener { listener.onItemClick(item) }
@@ -162,6 +169,9 @@ class OrderAdapter(
             decline.setOnClickListener {
                 listener.changeState(item, true)
             }
+
+
+
             //if (item.riderStatus?.lowercase() != "accepted")
 
             accept.setOnClickListener {

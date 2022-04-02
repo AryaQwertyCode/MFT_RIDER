@@ -7,7 +7,7 @@
     <string name="btn_continue">Continue</string>
     <string name="need_help">Need help?</string>
     <string name="call_us">Call us at</string>
-    <string name="help_number">+98711 41000</string>
+    <string name="help_number">9871141000</string>
     <string name="access_token">access_token</string>
     <string name="logout">Logout</string>
     <string name="drawer_open" translatable="false">Open Drawer</string>
