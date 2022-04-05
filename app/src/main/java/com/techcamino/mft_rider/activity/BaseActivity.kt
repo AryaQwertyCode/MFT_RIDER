@@ -38,8 +38,11 @@ import com.techcamino.mft_rider.permissionUtils.OnPermissionPermanentlyDeniedLis
 
 
 abstract class BaseActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+
         setContentView(findContentView())
         bindViewWithViewBinding((findViewById<ViewGroup>(android.R.id.content)).getChildAt(0))
     }
@@ -149,7 +152,6 @@ abstract class BaseActivity : AppCompatActivity() {
             }else{
                 isDenied = 1
             }
-
             //ShowPrompt(context,permissions);
             if (isDenied == 1) onPermissionDeniedListener.OnPermissionDenied()
             else if (isDenied == 0) onPermissionPermanentlyDeniedListener.OnPermissionPermanentlyDenied()

@@ -251,7 +251,7 @@
                 android:id="@+id/footer_card"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/thirty"
-                android:background="@drawable/footer_bg"
+                android:background="@drawable/footerbg"
                 app:layout_constraintBottom_toBottomOf="parent">
 
                 <LinearLayout
