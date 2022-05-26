@@ -13,17 +13,20 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.techcamino.mft_rider.R
+import com.techcamino.mft_rider.models.orders.Detail
 import com.techcamino.mft_rider.models.orders.OrderDetail
 
 class SubOrderAdapter(
-    private val mList: List<OrderDetail.Result.OrderInfo.Detail>,
+  //  private val mList: List<OrderDetail.Result.OrderInfo.Detail>,
+    private val mList: List<Detail>,
     private val context: Context,
     val itemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<SubOrderAdapter.ViewHolder>() {
 
 
     interface OnItemClickListener {
-        fun onItemClick(order: OrderDetail.Result.OrderInfo.Detail,image:ImageView)
+      //  fun onItemClick(order: OrderDetail.Result.OrderInfo.Detail,image:ImageView)
+        fun onItemClick(order:Detail,image:ImageView)
     }
 
     // create new views
@@ -82,13 +85,15 @@ class SubOrderAdapter(
 
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+
         val imageView: ImageView = itemView.findViewById(R.id.imageview)
         val orderId: TextView = itemView.findViewById(R.id.suborder_id)
         val accept: CardView = itemView.findViewById(R.id.accept_btn)
         val placeholder: LinearLayout = itemView.findViewById(R.id.placeholder)
         val uImageView: ImageView = itemView.findViewById(R.id.suborder_image)
 
-        fun bind(item: OrderDetail.Result.OrderInfo.Detail, listener: OnItemClickListener) {
+      //  fun bind(item: OrderDetail.Result.OrderInfo.Detail, listener: OnItemClickListener) {
+        fun bind(item: Detail, listener: OnItemClickListener) {
 
             accept.setOnClickListener {
                 listener.onItemClick(

@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MFT_RIDER.iml" filepath="$PROJECT_DIR$/.idea/modules/MFT_RIDER.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MFT_RIDER.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MFT_RIDER.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MFT_RIDER.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MFT_RIDER.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MFT_RIDER.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MFT_RIDER.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MFT_RIDER.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MFT_RIDER.app.unitTest.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_login.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\dashboard.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\dashboard.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_map.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\activity_map.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\progress_dialog.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\progress_dialog.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\bottom_sheet.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\bottom_sheet.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_otp.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\activity_otp.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\app_bar_main.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\app_bar_main.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\nav_header_home.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\nav_header_home.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\suborder_view_design.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\suborder_view_design.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_splash.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_receipt.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\activity_receipt.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\content_main.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\content_main.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\toolbar.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\toolbar.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\placeholder.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\placeholder.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_home.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\activity_home.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\order_view_design.xml",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\order_view_design.xml"
+    }
+]

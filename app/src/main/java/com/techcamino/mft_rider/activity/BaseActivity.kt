@@ -188,8 +188,10 @@ abstract class BaseActivity : AppCompatActivity() {
 
     @Throws(IOException::class)
     fun createImageFile(dirName: String,fileName: String): File {
+
         // Create an image file name
         //val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+
         val storageDir: File? = getAppSpecificAlbumStorageDir(this, Environment.DIRECTORY_PICTURES,dirName)
 
 //        return File.createTempFile(

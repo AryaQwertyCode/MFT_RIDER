@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v27\\values-v27.xml",
+            "map": [
+                {
+                    "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\values-v27\\themes.xml",
+                    "from": {
+                        "startLines": "26,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "1203,59",
+                        "endLines": "33,24",
+                        "endColumns": "12,12",
+                        "endOffsets": "1714,1195"
+                    },
+                    "to": {
+                        "startLines": "2,10",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,564",
+                        "endLines": "9,31",
+                        "endColumns": "12,12",
+                        "endOffsets": "559,1679"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -14,19 +14,21 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.provider.Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION
+import android.service.controls.ControlsProviderService.TAG
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.exifinterface.media.ExifInterface
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.TransformationUtils
+import com.bumptech.glide.load.resource.bitmap.TransformationUtils.rotateImage
 import com.google.android.material.snackbar.Snackbar
 import com.techcamino.mft_rider.R
 import com.techcamino.mft_rider.adapters.SubOrderAdapter
@@ -34,8 +36,10 @@ import com.techcamino.mft_rider.apis.ApiClient
 import com.techcamino.mft_rider.apis.ApiInterface
 import com.techcamino.mft_rider.databinding.ActivityReceiptBinding
 import com.techcamino.mft_rider.models.MessageDetail
+import com.techcamino.mft_rider.models.orders.Detail
 import com.techcamino.mft_rider.models.orders.Order
 import com.techcamino.mft_rider.models.orders.OrderDetail
+import com.techcamino.mft_rider.models.orders.OrderInfo
 import com.techcamino.mft_rider.permissionUtils.OnActivityResultListener
 import com.techcamino.mft_rider.utils.ProgressDialog
 import okhttp3.MediaType
@@ -44,12 +48,10 @@ import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.ByteArrayOutputStream
 import java.io.File
-import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
-import com.bumptech.glide.load.resource.bitmap.TransformationUtils.rotateImage
-import java.io.ByteArrayOutputStream
 
 
 class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultListener,
@@ -61,7 +63,8 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
     lateinit var dialog: Dialog
     private lateinit var token: String
     private var order: Order.Result.Orders? = null
-    private var subOrder: OrderDetail.Result.OrderInfo.Detail? = null
+  //  private var subOrder: OrderDetail.Result.OrderInfo.Detail ? = null
+    private var subOrder: Detail? = null
     private var pictureFilePath: String? = null
     private val MY_PERMISSIONS_REQUEST_CAMERA = 99
     private var isDelivered: Boolean = false
@@ -107,6 +110,7 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
     }
 
     // check permission
+    @RequiresApi(Build.VERSION_CODES.R)
     private fun checkPermissions(permission: kotlin.String, requestCode: Int) {
         if (ContextCompat.checkSelfPermission(
                 this,
@@ -115,9 +119,11 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         ) {
 
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
+
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
+
                 AlertDialog.Builder(this)
                     .setTitle("Required Camera Permission")
                     .setMessage("You have to give this permission to access camera")
@@ -128,8 +134,7 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
                                 MY_PERMISSIONS_REQUEST_CAMERA
                             )
                         })
-                    .setNegativeButton("Cancel",
-                        DialogInterface.OnClickListener { dialogInterface, i -> dialogInterface.dismiss() })
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialogInterface, i -> dialogInterface.dismiss() })
                     .create()
                     .show()
             } else {
@@ -151,12 +156,46 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         }
     }
 
-    private fun getPictureFile(fileName: kotlin.String, dirName: kotlin.String): File {
+    @RequiresApi(Build.VERSION_CODES.R)
+    private fun getPictureFile(fileName: String, dirName: kotlin.String): File? {
 
         val diren = this.resources.getString(R.string.app_name)
+
+       /* var image : File ? = null
+        if (Environment.isExternalStorageManager()) {
+            val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+            val imagePath = File(storageDir, diren)
+            Log.d("avinash", "Find " + imagePath.absolutePath)
+
+            if (!imagePath.exists()) {
+                if (!imagePath.mkdirs()) {
+                    Log.d("CameraTestIntent", "failed to create directory");
+
+                } else {
+                    Log.d("tag", "create new Tux folder");
+                }
+
+            }
+
+            // val imageName = subOrder?.subOrderId
+
+            val imageName = subOrder?.subOrderId
+            //val image = File(imagePath, "$imageName$fileName.jpg")
+             image = File(imagePath, "$imageName$fileName.jpg")
+            Log.d("image path", image.absolutePath)
+
+            pictureFilePath = image.absolutePath
+
+            return image
+        } else {
+            val permissionIntent = Intent(ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+            startActivity(permissionIntent)
+        }*/
+
         val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         val imagePath = File(storageDir, diren)
         Log.d("avinash", "Find " + imagePath.absolutePath)
+
         if (!imagePath.exists()) {
             if (!imagePath.mkdirs()) {
                 Log.d("CameraTestIntent", "failed to create directory");
@@ -164,7 +203,11 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
             } else {
                 Log.d("tag", "create new Tux folder");
             }
+
         }
+
+       // val imageName = subOrder?.subOrderId
+
         val imageName = subOrder?.subOrderId
         val image = File(imagePath, "$imageName$fileName.jpg")
         Log.d("image path", image.absolutePath)
@@ -172,11 +215,15 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         pictureFilePath = image.absolutePath
 
         return image
+
+     //   return image
+
     }
 
     /**
      * testing image capture
      */
+    @RequiresApi(Build.VERSION_CODES.R)
     private fun clickPhoto(requestCode: Int) {
 
         val takePictureIntent = Intent()
@@ -195,6 +242,7 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
                } catch (ex: IOException) {
 
                    Toast.makeText(this, "${ex.message}", Toast.LENGTH_LONG).show()
+                   Log.d(TAG, "clickPhoto:${ex.message}")
                    null
 
                }
@@ -203,7 +251,6 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
 
                // Continue only if the File was successfully created
                photoFile?.also {
-
 
                    val photoURI: Uri = FileProvider.getUriForFile(
                        this,
@@ -243,8 +290,8 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
                    initRequestCode(takePictureIntent, requestCode)
                }
 
-
            }
+
        /*}else{
            Toast.makeText(this,"Could not flound application to capture the Photo",Toast.LENGTH_LONG).show()
        }*/
@@ -262,12 +309,12 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         currentRequestCode: Int
     ) {
 
-     //   Log.d("testing file name", pictureFilePath!!)
 
         if (currentRequestCode == REQUEST_IMAGE_CAPTURE_WITHOUT_SCALE) {
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                 val file = File(pictureFilePath!!)
+               // val file = File(shareUri)
                 shareUri = FileProvider.getUriForFile(
                     this,
                     "techcamino.mft_rider.provider",
@@ -276,14 +323,21 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
             } else {
 
 
+
             }
             val compressionRatio = 20 //1 == originalImage, 2 = 50% compression, 4=25% compress
 
-            val file: File = File(pictureFilePath)
+            val file: File = File(pictureFilePath.toString())
+
             try {
 
+                Log.d(TAG, "onActivityResultImageFilePath:${file.path} ")
 
-                var bitmap = BitmapFactory.decodeFile(file.path)
+
+                val options =  BitmapFactory.Options();
+                options.inJustDecodeBounds = false
+              //  var bitmap = BitmapFactory.decodeFile(file.path)
+                var bitmap = BitmapFactory.decodeFile(file.absolutePath)
 
                 var image_width = bitmap.width
                 var image_height = bitmap.height
@@ -295,9 +349,6 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
                     bitmap.compress(Bitmap.CompressFormat.JPEG, compressionRatio, outputStream)
                 }
 
-            //    bitmap.compress(Bitmap.CompressFormat.JPEG, compressionRatio, FileOutputStream(file))
-
-              //  bitmap.recycle()
 
             } catch (t: Throwable) {
                 Log.e("ERROR", "Error compressing file.$t")
@@ -406,7 +457,8 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         })
     }
 
-    private fun renderDetail(orderInfo: OrderDetail.Result.OrderInfo) {
+  //  private fun renderDetail(orderInfo: OrderDetail.Result.OrderInfo) {
+    private fun renderDetail(orderInfo: OrderInfo) {
         binding.recName.text = orderInfo.shippingFirstname
         binding.delCity.text = orderInfo.shippingCity
         binding.recNum.text = orderInfo.shippingTelephone
@@ -487,21 +539,22 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
                         isDelivered = true
                         showSnack(R.string.upload_image_success)
                         subOrder?.upImage = response.body()!!.result.vendorImage!!
-                        //subOrder?.upImage = pictureFilePath
+
+                        // subOrder?.upImage = pictureFilePath
 
                         binding.suborders.adapter?.notifyDataSetChanged()
 
                     } else {
                         isDelivered = false
                         showSnack(R.string.upload_image_failed)
-                        Log.d("Failed", "Image not uploaded")
+                        Log.d("Failed", "Image not uploaded error")
                     }
                     if (dialog.isShowing)
                         dialog.dismiss()
                 }
 
                 override fun onFailure(call: Call<MessageDetail>, t: Throwable) {
-                    Log.d("OnFailure", "Image not uploaded")
+                    Log.d("OnFailure", "Image not uploaded $call,$t")
                     showSnack(R.string.upload_image_failed)
                     if (dialog.isShowing)
                         dialog.dismiss()
@@ -513,6 +566,7 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
             if (dialog.isShowing)
                 dialog.dismiss()
             Log.d("Exception", "Image upload failed" + e.printStackTrace())
+           // Log.d("Exception", "Image Upload issue $e")
         }
 
     }
@@ -533,7 +587,8 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
             .show()
     }
 
-    private fun renderSubOrders(orders: ArrayList<OrderDetail.Result.OrderInfo.Detail>) {
+ //   private fun renderSubOrders(orders: ArrayList<OrderDetail.Result.OrderInfo.Detail>) {
+    private fun renderSubOrders(orders: ArrayList<Detail>) {
         // this creates a vertical layout Manager
         binding.suborders.layoutManager =
             LinearLayoutManager(this@ReceiptActivity)
@@ -544,7 +599,9 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         binding.suborders.adapter = adapter
     }
 
-    override fun onItemClick(order: OrderDetail.Result.OrderInfo.Detail, uImageView: ImageView) {
+  //  override fun onItemClick(order: OrderDetail.Result.OrderInfo.Detail, uImageView: ImageView) {
+    @RequiresApi(Build.VERSION_CODES.R)
+    override fun onItemClick(order: Detail, uImageView: ImageView) {
         Log.d("Suborder", order.subOrderId!!)
         subOrder = order
         imageView = uImageView

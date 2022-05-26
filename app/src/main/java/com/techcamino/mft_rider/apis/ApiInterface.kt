@@ -49,6 +49,9 @@ interface ApiInterface {
         @Field("reason") reason: String,
     ): Call<MessageDetail>
 
+
+
+
     @POST("riderapp/api/imageUpload")
     fun uploadImage(
         @Header("Authorization") toke: String,

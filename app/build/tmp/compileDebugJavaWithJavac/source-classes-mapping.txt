@@ -1,0 +1,44 @@
+com/techcamino/mft_rider/databinding/SuborderViewDesignBinding.java
+ com.techcamino.mft_rider.databinding.SuborderViewDesignBinding
+com/techcamino/mft_rider/databinding/ActivityOtpBinding.java
+ com.techcamino.mft_rider.databinding.ActivityOtpBinding
+com/techcamino/mft_rider/permissionUtils/OnPermissionResultListener.java
+ com.techcamino.mft_rider.permissionUtils.OnPermissionResultListener
+com/techcamino/mft_rider/permissionUtils/OnPermissionGrantedListener.java
+ com.techcamino.mft_rider.permissionUtils.OnPermissionGrantedListener
+com/techcamino/mft_rider/databinding/ActivityMainBinding.java
+ com.techcamino.mft_rider.databinding.ActivityMainBinding
+com/techcamino/mft_rider/permissionUtils/OnPermissionPermanentlyDeniedListener.java
+ com.techcamino.mft_rider.permissionUtils.OnPermissionPermanentlyDeniedListener
+com/techcamino/mft_rider/databinding/ProgressDialogBinding.java
+ com.techcamino.mft_rider.databinding.ProgressDialogBinding
+com/techcamino/mft_rider/databinding/OrderViewDesignBinding.java
+ com.techcamino.mft_rider.databinding.OrderViewDesignBinding
+com/techcamino/mft_rider/databinding/NavHeaderHomeBinding.java
+ com.techcamino.mft_rider.databinding.NavHeaderHomeBinding
+com/techcamino/mft_rider/databinding/ActivityHomeBinding.java
+ com.techcamino.mft_rider.databinding.ActivityHomeBinding
+com/techcamino/mft_rider/databinding/BottomSheetBinding.java
+ com.techcamino.mft_rider.databinding.BottomSheetBinding
+com/techcamino/mft_rider/databinding/ActivityMapBinding.java
+ com.techcamino.mft_rider.databinding.ActivityMapBinding
+com/techcamino/mft_rider/databinding/ContentMainBinding.java
+ com.techcamino.mft_rider.databinding.ContentMainBinding
+com/techcamino/mft_rider/databinding/AppBarMainBinding.java
+ com.techcamino.mft_rider.databinding.AppBarMainBinding
+com/techcamino/mft_rider/databinding/ActivitySplashBinding.java
+ com.techcamino.mft_rider.databinding.ActivitySplashBinding
+com/techcamino/mft_rider/databinding/ToolbarBinding.java
+ com.techcamino.mft_rider.databinding.ToolbarBinding
+com/techcamino/mft_rider/databinding/PlaceholderBinding.java
+ com.techcamino.mft_rider.databinding.PlaceholderBinding
+com/techcamino/mft_rider/databinding/DashboardBinding.java
+ com.techcamino.mft_rider.databinding.DashboardBinding
+com/techcamino/mft_rider/databinding/ActivityReceiptBinding.java
+ com.techcamino.mft_rider.databinding.ActivityReceiptBinding
+com/techcamino/mft_rider/BuildConfig.java
+ com.techcamino.mft_rider.BuildConfig
+com/techcamino/mft_rider/permissionUtils/OnPermissionDeniedListener.java
+ com.techcamino.mft_rider.permissionUtils.OnPermissionDeniedListener
+com/techcamino/mft_rider/databinding/ActivityLoginBinding.java
+ com.techcamino.mft_rider.databinding.ActivityLoginBinding
