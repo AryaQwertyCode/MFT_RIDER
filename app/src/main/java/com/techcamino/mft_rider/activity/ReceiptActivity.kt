@@ -52,6 +52,7 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -157,6 +158,24 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
     @RequiresApi(Build.VERSION_CODES.R)
     private fun getPictureFile(fileName: String, dirName: kotlin.String): File? {
 
+        /*-------------------------------*/
+
+
+       /* val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val storageDirOne: File = getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!
+        return File.createTempFile(
+            "JPEG_${timeStamp}_", *//* prefix *//*
+            ".jpg", *//* suffix *//*
+            storageDirOne *//* directory *//*
+        ).apply {
+            // Save a file: path for use with ACTION_VIEW intents
+            currentPhotoPath = absolutePath
+        }*/
+
+
+
+        /*------------------------------*/
+
         val diren = this.resources.getString(R.string.app_name)
 
        /* var image : File ? = null
@@ -195,6 +214,7 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         Log.d("avinash", "Find " + imagePath.absolutePath)
 
         if (!imagePath.exists()) {
+
             if (!imagePath.mkdirs()) {
                 Log.d("CameraTestIntent", "failed to create directory");
 
@@ -207,7 +227,8 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
        // val imageName = subOrder?.subOrderId
 
         val imageName = subOrder?.subOrderId
-        val image = File(imagePath, "$imageName$fileName.jpg")
+       // val image = File(imagePath, "$imageName$fileName.jpg")
+        val image = File.createTempFile( "$imageName$fileName", ".jpg")
         Log.d("image path", image.absolutePath)
 
         pictureFilePath = image.absolutePath
@@ -304,61 +325,91 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         result: ActivityResult,
         currentRequestCode: Int
     ) {
-
+       // Log.d("testing file name", pictureFilePath!!)
 
         if (currentRequestCode == REQUEST_IMAGE_CAPTURE_WITHOUT_SCALE) {
 
+
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                 val file = File(pictureFilePath!!)
-               // val file = File(shareUri)
                 shareUri = FileProvider.getUriForFile(
                     this,
                     "techcamino.mft_rider.provider",
                     file
                 )
             } else {
-
-
+                var image: Bitmap = getBitmapFromContentResolver(Uri.parse(pictureFilePath))
 
             }
             val compressionRatio = 20 //1 == originalImage, 2 = 50% compression, 4=25% compress
 
-            val file: File = File(pictureFilePath)
+//            val file: File = File(pictureFilePath)
+//            try {
+//                var bitmap = BitmapFactory.decodeFile(file.path)
+//                bitmap = degreeRotate(rotation(bitmap, file), 0f)
+//                bitmap.compress(
+//                    Bitmap.CompressFormat.JPEG,
+//                    compressionRatio,
+//                    FileOutputStream(file)
+//                )
+//            } catch (t: Throwable) {
+//                Log.e("ERROR", "Error compressing file.$t")
+//                t.printStackTrace()
+//            }
+            if(!shareUri.toString().isNullOrEmpty()){
+                Log.d("34245452", shareUri.toString())
+                var image: Bitmap = getBitmapFromContentResolver(this!!.shareUri!!)
 
-            try {
-
-                Log.d(TAG, "onActivityResultImageFilePath:${file.path} ")
-
-
-                val options =  BitmapFactory.Options();
-                options.inJustDecodeBounds =false
-              //  var bitmap = BitmapFactory.decodeFile(file.path)
-                var bitmap = BitmapFactory.decodeFile(file.absolutePath)
-
-                var image_width = bitmap.width
-                var image_height = bitmap.height
-
-                bitmap = degreeRotate(rotation(bitmap, file), 0f)
-
-                if(image_width>image_height){
-                   var  outputStream = ByteArrayOutputStream()
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, compressionRatio, outputStream)
+                var orientation: Int = if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+                    getOrientation2(this!!.shareUri!!)
+                }else{
+                    getOrientation(this!!.shareUri!!)
                 }
 
-                bitmap.compress(Bitmap.CompressFormat.JPEG, compressionRatio, FileOutputStream(file))
+                val file = if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R){
+                    createImageFile("mft",subOrder?.subOrderId!! )
+                }else{
+                    Log.d("i am here"," find something")
+                    //File("${Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)}" + File.separator + "mft",getNewFileName(subOrder?.subOrderId!! ))
+                    createImageFile("mft",subOrder?.subOrderId!! )
+                }
+                var fos: FileOutputStream = FileOutputStream(file)
+                var bitmap = image
 
-                bitmap.recycle()
+                if (orientation != -1 && orientation != 0) {
 
-            } catch (t: Throwable) {
-                Log.e("ERROR", "Error compressing file.$t")
-                t.printStackTrace()
+                    val matrix = Matrix()
+                    if (orientation == 6) {
+                        matrix.postRotate(90f)
+                        Log.d("EXIF", "Exif: $orientation")
+                    } else if (orientation == 3) {
+                        matrix.postRotate(180f)
+                        Log.d("EXIF", "Exif: $orientation")
+                    } else if (orientation == 8) {
+                        matrix.postRotate(270f)
+                        Log.d("EXIF", "Exif: $orientation")
+                    }else{
+                        matrix.postRotate(orientation.toFloat())
+                    }
+                    bitmap = Bitmap.createBitmap(
+                        bitmap, 0, 0,
+                        bitmap.width, bitmap.height, matrix,
+                        true
+                    )
+                }
+
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
+                uploadImage(
+                    token,
+                    subOrder?.subOrderId!!,
+                    file
+                )
+
             }
 
-            uploadImage(token, subOrder?.subOrderId!!, File(pictureFilePath!!))
         }
 
     }
-
     private fun rotation(bitmap: Bitmap, file: File): Bitmap {
         val ei = ExifInterface(file.path)
         val orientation: Int = ei.getAttributeInt(
