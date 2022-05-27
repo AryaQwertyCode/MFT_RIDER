@@ -4,12 +4,12 @@
         "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\toolbar_icon.png"
     },
     {
-        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_login.xml.flat",
-        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\activity_login.xml"
-    },
-    {
         "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\drawable_badge_background.xml.flat",
         "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\drawable\\badge_background.xml"
+    },
+    {
+        "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_login.xml.flat",
+        "source": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\src\\main\\res\\layout\\activity_login.xml"
     },
     {
         "merged": "C:\\AndroidProject\\QwertyCode\\mft_rider\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.webp.flat",

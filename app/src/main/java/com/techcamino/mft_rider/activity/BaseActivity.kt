@@ -65,7 +65,7 @@ abstract class BaseActivity : AppCompatActivity() {
     var mimeType: String = ""
     lateinit var currentPhotoPath: String
 
-    //lateinit var dialog: AlertDialog
+    // lateinit var dialog: AlertDialog
 
     @LayoutRes
     abstract fun findContentView(): Int
@@ -188,10 +188,8 @@ abstract class BaseActivity : AppCompatActivity() {
 
     @Throws(IOException::class)
     fun createImageFile(dirName: String,fileName: String): File {
-
         // Create an image file name
         //val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-
         val storageDir: File? = getAppSpecificAlbumStorageDir(this, Environment.DIRECTORY_PICTURES,dirName)
 
 //        return File.createTempFile(

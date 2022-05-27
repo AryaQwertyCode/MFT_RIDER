@@ -96,9 +96,7 @@ class SubOrderAdapter(
         fun bind(item: Detail, listener: OnItemClickListener) {
 
             accept.setOnClickListener {
-                listener.onItemClick(
-                    item,uImageView
-                )
+                listener.onItemClick(item,uImageView)
             }
 
             placeholder.setOnClickListener{

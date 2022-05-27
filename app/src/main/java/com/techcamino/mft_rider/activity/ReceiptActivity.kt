@@ -50,6 +50,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
 
@@ -119,11 +120,9 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         ) {
 
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
-
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
-
                 AlertDialog.Builder(this)
                     .setTitle("Required Camera Permission")
                     .setMessage("You have to give this permission to access camera")
@@ -149,8 +148,7 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
                 clickPhoto(REQUEST_IMAGE_CAPTURE_WITHOUT_SCALE)
 
             } else {
-                Toast.makeText(this, "No camera available on this device.", Toast.LENGTH_LONG)
-                    .show()
+                Toast.makeText(this, "No camera available on this device.", Toast.LENGTH_LONG).show()
             }
             //Toast.makeText(this,"Permission already granted", Toast.LENGTH_LONG).show()
         }
@@ -247,8 +245,6 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
 
                }
 
-
-
                // Continue only if the File was successfully created
                photoFile?.also {
 
@@ -327,7 +323,7 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
             }
             val compressionRatio = 20 //1 == originalImage, 2 = 50% compression, 4=25% compress
 
-            val file: File = File(pictureFilePath.toString())
+            val file: File = File(pictureFilePath)
 
             try {
 
@@ -335,7 +331,7 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
 
 
                 val options =  BitmapFactory.Options();
-                options.inJustDecodeBounds = false
+                options.inJustDecodeBounds =false
               //  var bitmap = BitmapFactory.decodeFile(file.path)
                 var bitmap = BitmapFactory.decodeFile(file.absolutePath)
 
@@ -349,6 +345,9 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
                     bitmap.compress(Bitmap.CompressFormat.JPEG, compressionRatio, outputStream)
                 }
 
+                bitmap.compress(Bitmap.CompressFormat.JPEG, compressionRatio, FileOutputStream(file))
+
+                bitmap.recycle()
 
             } catch (t: Throwable) {
                 Log.e("ERROR", "Error compressing file.$t")
@@ -590,8 +589,7 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
  //   private fun renderSubOrders(orders: ArrayList<OrderDetail.Result.OrderInfo.Detail>) {
     private fun renderSubOrders(orders: ArrayList<Detail>) {
         // this creates a vertical layout Manager
-        binding.suborders.layoutManager =
-            LinearLayoutManager(this@ReceiptActivity)
+        binding.suborders.layoutManager = LinearLayoutManager(this@ReceiptActivity)
         // This will pass the ArrayList to our Adapter
         val adapter = SubOrderAdapter(orders, this@ReceiptActivity, this)
         adapter.setHasStableIds(true)
