@@ -339,7 +339,6 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
                 )
             } else {
                 var image: Bitmap = getBitmapFromContentResolver(Uri.parse(pictureFilePath))
-
             }
             val compressionRatio = 20 //1 == originalImage, 2 = 50% compression, 4=25% compress
 
@@ -356,7 +355,10 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
 //                Log.e("ERROR", "Error compressing file.$t")
 //                t.printStackTrace()
 //            }
+
+
             if(!shareUri.toString().isNullOrEmpty()){
+
                 Log.d("34245452", shareUri.toString())
                 var image: Bitmap = getBitmapFromContentResolver(this!!.shareUri!!)
 
@@ -376,29 +378,42 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
                 var fos: FileOutputStream = FileOutputStream(file)
                 var bitmap = image
 
+                Log.d(TAG, "Image Size:${bitmap.width} , ${bitmap.height}")
+
                 if (orientation != -1 && orientation != 0) {
 
                     val matrix = Matrix()
                     if (orientation == 6) {
-                        matrix.postRotate(90f)
+                        matrix.postRotate(60f)
                         Log.d("EXIF", "Exif: $orientation")
                     } else if (orientation == 3) {
-                        matrix.postRotate(180f)
+                        matrix.postRotate(100f)
                         Log.d("EXIF", "Exif: $orientation")
                     } else if (orientation == 8) {
-                        matrix.postRotate(270f)
+                        matrix.postRotate(180f)
                         Log.d("EXIF", "Exif: $orientation")
                     }else{
                         matrix.postRotate(orientation.toFloat())
                     }
+
                     bitmap = Bitmap.createBitmap(
                         bitmap, 0, 0,
                         bitmap.width, bitmap.height, matrix,
                         true
                     )
+
                 }
 
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
+                bitmap.compress(
+                    Bitmap.CompressFormat.JPEG,
+                    20,
+                    fos
+                )
+
+                Log.d(TAG, "AfterCompressImage ${bitmap.compress( Bitmap.CompressFormat.JPEG,
+                    20,
+                    fos)}")
+
                 uploadImage(
                     token,
                     subOrder?.subOrderId!!,
@@ -455,7 +470,6 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
 
     override fun onStart() {
         supportActionBar?.title = "#${order?.orderId}"
-
         //binding.deliveredBtn.isEnabled=imageUploaded
         super.onStart()
     }
@@ -474,6 +488,7 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
     }
 
     private fun getOrderDetail(token: String, orderId: String) {
+
         val orderDetail = apiService.getOrderDetail("Bearer $token", orderId)
         orderDetail.enqueue(object : Callback<OrderDetail> {
             override fun onResponse(call: Call<OrderDetail>, response: Response<OrderDetail>) {
@@ -562,22 +577,15 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
 
         try {
             dialog.show()
-            Log.d("uploading", "uploading image started ${imageUrl.name}")
-            // Parsing any Media type file
+            Log.d("uploading", "uploading image started ${imageUrl.name.length}")
             val builder = MultipartBody.Builder()
             builder.setType(MultipartBody.FORM)
-
             builder.addFormDataPart("sub_order_id", orderId)
-
-            // Map is used to multipart the file using okhttp3.RequestBody
-            // Multiple Images
-
             builder.addFormDataPart(
                 "images",
                 imageUrl.name,
                 RequestBody.create(MediaType.parse("multipart/form-data"), imageUrl)
             )
-
             val requestBody = builder.build()
             val upload = apiService.uploadImage("Bearer $token", requestBody)
             upload.enqueue(object : Callback<MessageDetail> {
@@ -636,8 +644,6 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
             })
             .show()
     }
-
- //   private fun renderSubOrders(orders: ArrayList<OrderDetail.Result.OrderInfo.Detail>) {
     private fun renderSubOrders(orders: ArrayList<Detail>) {
         // this creates a vertical layout Manager
         binding.suborders.layoutManager = LinearLayoutManager(this@ReceiptActivity)
@@ -647,8 +653,6 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         // Setting the Adapter with the recyclerview
         binding.suborders.adapter = adapter
     }
-
-  //  override fun onItemClick(order: OrderDetail.Result.OrderInfo.Detail, uImageView: ImageView) {
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onItemClick(order: Detail, uImageView: ImageView) {
         Log.d("Suborder", order.subOrderId!!)
@@ -656,7 +660,6 @@ class ReceiptActivity : BaseActivity(), View.OnClickListener, OnActivityResultLi
         imageView = uImageView
         checkPermissions(Manifest.permission.CAMERA, MY_PERMISSIONS_REQUEST_CAMERA)
     }
-
     private fun setPic() {
         // Get the dimensions of the View
         val targetW: Int = imageView!!.width

@@ -1,11 +1,13 @@
 package com.techcamino.mft_rider.apis
 
 
-import com.techcamino.mft_rider.BuildConfig
+import com.mikhaellopez.circularimageview.BuildConfig
+
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 
 object ApiClient {
@@ -32,11 +34,19 @@ object ApiClient {
 
     private fun getHttpClient():OkHttpClient{
         if(BuildConfig.DEBUG){
-            // disable logger in production
+           // disable logger in production
         }
     val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
         val httpClient = OkHttpClient.Builder()
+
+        httpClient.connectTimeout(5, TimeUnit.MINUTES) // connect timeout
+            .connectTimeout(5,TimeUnit.MINUTES)
+            .writeTimeout(5, TimeUnit.MINUTES) // write timeout
+            .readTimeout(5, TimeUnit.MINUTES) // read timeout
+            .build()
+      //  okHttpClient = builder.build();
+
         httpClient.addInterceptor(logging)
         return httpClient.build()
     }

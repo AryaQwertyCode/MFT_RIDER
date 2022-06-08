@@ -67,6 +67,7 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         dialog = ProgressDialog.progressDialog(this)
         phoneNumber = intent.getStringExtra("mobile")!!
         name = intent.getStringExtra("name")!!
+
 //        Log.d("phonenumber", phoneNumber)
 
         apiService = ApiClient.apiInterface

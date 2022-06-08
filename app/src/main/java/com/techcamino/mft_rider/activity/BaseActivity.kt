@@ -88,6 +88,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
        return "$fileName.jpg"
     }
+    @SuppressLint("Range")
     fun getOrientation(shareUri: Uri): Int {
         val orientationColumn = arrayOf(MediaStore.Images.Media.ORIENTATION)
         val cur =
@@ -114,8 +115,10 @@ abstract class BaseActivity : AppCompatActivity() {
             contentResolver.openInputStream(shareUri)!!
         return  getOrientation3(inputStream)
     }
+
     @SuppressLint("NewApi")
     private fun getOrientation3(inputStream: InputStream): Int {
+
         val exif: ExifInterface
         var orientation: Int = -1
         try {
@@ -132,6 +135,7 @@ abstract class BaseActivity : AppCompatActivity() {
         return  orientation
 
     }
+
     fun ShowPrompt(isPermanentlyDenied: Boolean) {
         val alertBuilder = AlertDialog.Builder(this)
         alertBuilder.setCancelable(true)
